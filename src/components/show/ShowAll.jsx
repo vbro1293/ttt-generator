@@ -1,16 +1,21 @@
 import React, { Component } from "react";
+import {Map} from "immutable";
+
+//===================Import Components
+import GamePair from "./GamePair";
 
 class ShowAll extends Component {
 	constructor(props) {
 	  super(props);
 	
 	  this.state = {
-	  	players: ["p1" , "p2", "p3", "p4"]
+	  	players: ["p1" , "p2", "p3", "p4"],
+	  	pairs: [{p1:"a", p2:"b"}, {p1:"c", p2:"d"}],
 	  };
+	  this.pairs = this.pairs.bind(this);
 	}
 
-
-	render () {
+	pairs() {
 		const { players } = this.state;
 		let playersLeft = players.slice(); //retwritten
 		let ranPlayers = [];
@@ -23,12 +28,33 @@ class ShowAll extends Component {
 			ranPlayers.push(player);
 			length -= 1;
 		}
+	
+		const gamePairs = ranPlayers.reduce((acc, val, i) => {
+			if (i%2===0){
+				acc.push(Map({
+					p1: val,
+				}));
+				return acc;
+			}
+			else {
+				return acc;
+			}
 
+			}, []
+		)
+		this.setState({
+			pairs: gamePairs,
+		})
+	}
+
+	render () {
+		// this.pairs();
 		return (
 			<section>
-				{ ranPlayers.map( (player, i) => (
-					<p key={ i }>{ player }</p>
-				))}
+				{ this.state.pairs.map((pair,i) => (
+					<GamePair key={ i } player1={ pair.p1 } player2 ={ pair.p2 } />
+				))
+				}
 			</section>
 		)
 	}

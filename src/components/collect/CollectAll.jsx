@@ -19,6 +19,8 @@ class Collect extends Component {
 
 		//bind methods to this
 		this.addPlayer = this.addPlayer.bind(this);
+		this.isDisabled = this.isDisabled.bind(this);
+
 	}
 
 	//Method called when "add player" button pressed - adds input value to players list
@@ -38,13 +40,19 @@ class Collect extends Component {
 		})
 	}
 
+	//Method called for input validation - no empty field and no repeated name else isDisabled is true
+	isDisabled() {
+		const { newPlayer, players } = this.state;
+		return (!newPlayer || (players.filter(player => player === newPlayer)).length!==0);
+	}
+
 	render(){
 		const { newPlayer, players } = this.state;
 		return (
 			<main className="main">
 				<section className="add-players">
 					<Input onChange={ e => this.inputChange(e) } value={ newPlayer }/>
-					<Button onClick={ this.addPlayer } className="button">Add Player</Button>
+					<Button onClick={ this.addPlayer } isDisabled= { this.isDisabled() } className="button">Add Player</Button>
 				</section>
 				<PlayersList players={ players }/>
 				<Link to={ "/generated-tournament" } className="button">

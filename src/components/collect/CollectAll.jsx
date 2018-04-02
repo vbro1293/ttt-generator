@@ -56,7 +56,7 @@ class Collect extends Component {
 					<Button onClick={ this.addPlayer } isDisabled= { this.isDisabled() } className="button">Add Player</Button>
 				</section>
 				<PlayersList players={ players }/>
-				<Link to={ "/generated-tournament" } className="button">
+				<Link to={ (players.length>=4) ? "/generated-tournament" : "/" } className="button">
             		Generate Tournament
         		</Link>
 			</main>

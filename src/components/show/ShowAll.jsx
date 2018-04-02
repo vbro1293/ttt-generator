@@ -9,13 +9,14 @@ class ShowAll extends Component {
 	  super(props);
 	
 	  this.state = {
-	  	players: ["p1" , "p2", "p3", "p4"],
-	  	pairs: [{p1:"a", p2:"b"}, {p1:"c", p2:"d"}],
+	  	players: ["p1" , "p2", "p3", "p4", "p5", "p6"],
+	  	pairs: [],
 	  };
-	  this.pairs = this.pairs.bind(this);
 	}
 
-	pairs() {
+
+	render () {
+		// this.pairs();
 		const { players } = this.state;
 		let playersLeft = players.slice(); //retwritten
 		let ranPlayers = [];
@@ -26,32 +27,30 @@ class ShowAll extends Component {
 			const i = Math.floor(Math.random()*playersLeft.length);
 			const player = playersLeft.splice( i, 1 )[0];
 			ranPlayers.push(player);
-			length -= 1;
+			length = length - 1;
 		}
+		console.log(ranPlayers)
 	
 		const gamePairs = ranPlayers.reduce((acc, val, i) => {
-			if (i%2===0){
+			 if (i%2 === 0){
 				acc.push(Map({
-					p1: val,
+					p1: "",
+					p2: "",
 				}));
+				acc[Math.floor((i/2))]["p1"] = val;
 				return acc;
 			}
 			else {
+				acc[Math.floor(i/2)]["p2"] = val;
 				return acc;
 			}
 
 			}, []
-		)
-		this.setState({
-			pairs: gamePairs,
-		})
-	}
-
-	render () {
-		// this.pairs();
+		);
 		return (
 			<section>
-				{ this.state.pairs.map((pair,i) => (
+			
+				{ gamePairs.map((pair,i) => (
 					<GamePair key={ i } player1={ pair.p1 } player2 ={ pair.p2 } />
 				))
 				}

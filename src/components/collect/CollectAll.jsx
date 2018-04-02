@@ -12,28 +12,40 @@ class Collect extends Component {
 
 		//create local state to store players
 		this.state = {
+			newPlayer: "",
 			players: ["player1", "player2"],
 		}
+
+		//bind methods to this
 		this.addPlayer = this.addPlayer.bind(this);
 	}
 
-	//Add player method called when "add player" button pressed
+	//Method called when "add player" button pressed - adds input value to players list
 	addPlayer () {
 		const currentPlayers = this.state.players;
-		currentPlayers.push("player3");
+		const newPlayer = this.state.newPlayer;
+		currentPlayers.push(newPlayer);
 		this.setState({
 			players: currentPlayers,
 		})
 	}
 
+	//Method called when input value is changing
+	inputChange (e) {
+		this.setState ({
+			newPlayer: e.target.value,
+		})
+	}
+
 	render(){
+		const { newPlayer, players } = this.state;
 		return (
 			<main className="main">
 				<section className="add-players">
-					<Input />
+					<Input onChange={ e => this.inputChange(e) } value={ newPlayer }/>
 					<Button onClick={ this.addPlayer }>Add Player</Button>
 				</section>
-				<PlayersList players={ this.state.players }/>
+				<PlayersList players={ players }/>
 				<Button>Generate Tournament</Button>
 			</main>
 		)

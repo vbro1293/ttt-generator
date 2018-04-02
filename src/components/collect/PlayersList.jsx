@@ -8,8 +8,7 @@ const PlayersList = ({ players }) => (
 	<ul>
 		{ players.map((player, i) => (
 			<PlayerItem key={ i }>{ player }</PlayerItem>
-		))
-		}
+		))}
 	</ul>
 )
 

@@ -10,6 +10,7 @@ import "./App.css";
 import Header from "./components/Header";
 import FourOhFour from "./components/FourOhFour";
 import CollectAll from "./components/collect/CollectAll";
+import ShowAll from "./components/show/ShowAll";
 
 
 
@@ -20,7 +21,12 @@ const App = () => (
 
 		{ /* route  switch - to handle 404s */ }
 		<Switch>
-			<Route path="/" component={ CollectAll } />
+			{ /* Collect players data */}
+			<Route exact path="/" component={ CollectAll } />
+
+			{ /* Show generated tournament */}
+			<Route path="/generated-tournament" component={ ShowAll } />
+
 			{ /* 404 page */}
 			<Route component={ FourOhFour } />
 		</Switch>

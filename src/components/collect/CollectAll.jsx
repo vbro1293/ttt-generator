@@ -12,7 +12,7 @@ class Collect extends Component {
 
 		//create local state to store players
 		this.state = {
-			players: [],
+			players: ["player1"],
 		}
 	}
 
@@ -23,7 +23,7 @@ class Collect extends Component {
 					<Input />
 					<Button>Add Player</Button>
 				</form>
-				<PlayersList />
+				<PlayersList players={ this.state.players }/>
 				<Button>Generate Tournament</Button>
 			</section>
 		)

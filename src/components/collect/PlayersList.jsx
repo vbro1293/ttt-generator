@@ -3,9 +3,13 @@ import React from "react";
 //===============Import components
 import PlayerItem from "./PlayerItem";
 
-const PlayersList = () => (
+//Players passed in as props to map over and show in a list
+const PlayersList = ({ players }) => (
 	<ul>
-		<PlayerItem>player1</PlayerItem>
+		{ players.map((player, i) => (
+			<PlayerItem key={ i }>{ player }</PlayerItem>
+		))
+		}
 	</ul>
 )
 

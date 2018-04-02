@@ -29,6 +29,7 @@ class Collect extends Component {
 		const newPlayer = this.state.newPlayer;
 		currentPlayers.push(newPlayer);
 		this.setState({
+			newPlayer: "",
 			players: currentPlayers,
 		})
 	}

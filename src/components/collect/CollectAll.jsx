@@ -12,20 +12,30 @@ class Collect extends Component {
 
 		//create local state to store players
 		this.state = {
-			players: ["player1"],
+			players: ["player1", "player2"],
 		}
+		this.addPlayer = this.addPlayer.bind(this);
+	}
+
+	//Add player method called when "add player" button pressed
+	addPlayer () {
+		const currentPlayers = this.state.players;
+		currentPlayers.push("player3");
+		this.setState({
+			players: currentPlayers,
+		})
 	}
 
 	render(){
 		return (
-			<section className="main">
-				<form className="add-players">
+			<main className="main">
+				<section className="add-players">
 					<Input />
-					<Button>Add Player</Button>
-				</form>
+					<Button onClick={ this.addPlayer }>Add Player</Button>
+				</section>
 				<PlayersList players={ this.state.players }/>
 				<Button>Generate Tournament</Button>
-			</section>
+			</main>
 		)
 	}
 	

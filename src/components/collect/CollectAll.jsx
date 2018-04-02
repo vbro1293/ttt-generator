@@ -1,5 +1,6 @@
 //Collect page - where players are added. Contains imported components
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 //================Import components
 import Input from "./Input";
@@ -43,10 +44,12 @@ class Collect extends Component {
 			<main className="main">
 				<section className="add-players">
 					<Input onChange={ e => this.inputChange(e) } value={ newPlayer }/>
-					<Button onClick={ this.addPlayer }>Add Player</Button>
+					<Button onClick={ this.addPlayer } className="button">Add Player</Button>
 				</section>
 				<PlayersList players={ players }/>
-				<Button>Generate Tournament</Button>
+				<Link to={ "/generated-tournament" } className="button">
+            		Generate Tournament
+        		</Link>
 			</main>
 		)
 	}

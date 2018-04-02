@@ -1,3 +1,11 @@
 body {
 	background: #999;
 }
+.gamePair {
+	display: inline-block;
+	margin: 5px;
+	border: 1px solid black;
+	span {
+		border: 1px solid red;
+	}
+}

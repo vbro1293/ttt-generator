@@ -1,17 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// import the Router component
-import { BrowserRouter as Router } from "react-router-dom";
-
 import "./index.css";
 import App from "./App";
 
-// pass our articles through to App using props
+//==========Import the Router component
+import { BrowserRouter as Router } from "react-router-dom";
+
+//==========Imports for redux
+import store from "./data/store";
+import { Provider } from "react-redux";
 
 ReactDOM.render(
-    <Router>
-        <App />
-    </Router>,
+	<Provider store={ store }>
+	    <Router>
+	        <App />
+	    </Router>
+    </Provider>,
     document.getElementById("root"),
 );

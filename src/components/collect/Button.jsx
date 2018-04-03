@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ onClick, isDisabled, children }) => (
+const Button = ({ isDisabled, children, onClick}) => (
 	<button onClick={ onClick } disabled={ isDisabled }>{ children }</button>
 )
 

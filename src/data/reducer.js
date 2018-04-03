@@ -4,8 +4,6 @@
 const addPlayer = (state, { playerName }) => state.update("players", players => players.push(playerName))
 
 
-
-
 const reducer = (state, action) => {
 	switch (action.type) {
 		case "addPlayer": return addPlayer(state, action);

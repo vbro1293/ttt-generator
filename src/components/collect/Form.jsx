@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 //================Import components
 import Input from "./Input";
@@ -11,9 +11,9 @@ class Form extends Component {
 		this.state = {
 			input: "",
 		}
+
 		/* Bind methods to this */
 		this.submit = this.submit.bind(this);
-		// this.isDisabled = this.isDisabled.bind(this);
 	}
 	submit(e) {
 		/* Prevent auto reload */
@@ -25,12 +25,6 @@ class Form extends Component {
 		/* Reset input field */
 		this.setState({input: "",})
 	}
-
-	//Method called for input validation - no empty field and no repeated name else isDisabled is true
-	// isDisabled() {
-	// 	console.log(this.state.input)
-	// 	return ();
-	// }
 
 	change(e) {
 		/* Set local state to input value when typing */
@@ -48,5 +42,3 @@ class Form extends Component {
 };
 
 export default Form;
-
- // isDisabled= { isDisabled }

@@ -14,7 +14,7 @@ class Collect extends Component {
 		//create local state to store players
 		this.state = {
 			newPlayer: "",
-			players: ["player1", "player2"],
+			players: [],
 		}
 
 		//bind methods to this

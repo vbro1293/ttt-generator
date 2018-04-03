@@ -6,6 +6,6 @@ import initial from "./initial";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 //=============Redux DevTools Middleware
-const store = createStore(reducer, initial);
+const store = createStore(reducer, initial, composeEnhancers(applyMiddleware()));
 
 export default store;

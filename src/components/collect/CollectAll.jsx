@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 //================Import components
 import Input from "./Input";
 import Button from "./Button";
-import PlayersList from "./PlayersList";
+import PlayersList from "../../containers/PlayersList";
 
 class Collect extends Component {
 	constructor(props) {

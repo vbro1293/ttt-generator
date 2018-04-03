@@ -1,6 +1,6 @@
 import { Map, List } from "immutable";
 
-const reduce = (state, action) => {
+const reducer = (state, action) => {
 	switch (action.type) {
 		default: return state;
 	}

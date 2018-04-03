@@ -4,7 +4,7 @@ import React from "react";
 import PlayerItem from "./PlayerItem";
 import Button from "./Button";
 
-const PlayersList = ({ players }) => (
+const PlayersList = ({ players, onClick }) => (
 	<section>
 		<ul>
 			{ players.map((player, i) => 
@@ -12,7 +12,7 @@ const PlayersList = ({ players }) => (
 			)}
 		</ul>
 		{ players.size ? 
-			<Button>Reset</Button>
+			<Button onClick={ onClick }>Reset</Button>
 		:
 			null
 		}

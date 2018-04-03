@@ -10,7 +10,7 @@ class ShowAll extends Component {
 	  super(props);
 	
 	  this.state = {
-	  	players: ["p1" , "p2", "p3", "p4"],
+	  	players: ["pa" , "pb", "pc", "pd"],
 	  };
 	}
 
@@ -41,6 +41,7 @@ class ShowAll extends Component {
 				return acc;
 			}
 		}, []);
+		console.log("gamePairs " + gamePairs)
 		
 		
 		//Work out number of byes in first round
@@ -53,26 +54,51 @@ class ShowAll extends Component {
 			}
 			noOfByes = Math.pow(2, n)-noOfPlayers;
 		}
-		let noOfRounds = Math.pow(noOfPlayers, 0.5);
+		let noOfRounds = Math.log(noOfPlayers)/Math.log(2);
 
 		let rounds = [];
-		for (let i=2; i<=noOfRounds; i++){
+		for (let i=1; i<=noOfRounds; i+=1){
 			rounds.push(i);
 		}
-
+		
+		let games = [];
+		let gamesPerRound = noOfPlayers/2;
+		
+		for (let i=gamesPerRound; i>=1; i=i/2){
+			let pair = [];
+			for (let j=0; j<i; j+=1){
+				pair.push(j);
+			} 
+			games.push(pair);
+		}
+		console.log("rounds "+rounds)
+		console.log("games " + games)
+		
 		return (
 			<section>
 				
 				{/* Map over array of pair objects, assigning players as props */}
-				<h1>Round 1</h1>
-					{ !noOfByes ? gamePairs.map((pair,i) => (
-						<GamePair key={ i } player1={ pair.p1 } player2 ={ pair.p2 } />
-					)) : null }{/* BYES RENDERING NEEDED HERE /*}
-				
-			{/* Next rounds - basic for power 2 */}
-				{ rounds.map((round, i) => (
-					<NextRound key={ i } />
-					))}
+
+				{ !noOfByes ? rounds.map((round, i) => {
+					return (
+						<div key={ i } className="round">
+							<h1 >Round { round }</h1>
+							
+								{ round === 1 ?
+									gamePairs.map((pair,i) => 
+										<GamePair key={ i } player1={ pair.p1 } player2 ={ pair.p2 } />
+									)
+								:
+									games[i].map((pair, j) => 
+											<GamePair key={ j } />
+									)
+								}
+							
+						</div>
+					)
+				})
+				: null
+			}
 			</section>
 		)
 	}

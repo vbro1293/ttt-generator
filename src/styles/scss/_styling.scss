@@ -5,7 +5,14 @@ body {
 	display: inline-block;
 	margin: 5px;
 	border: 1px solid black;
-	span {
+	.red {
 		border: 1px solid red;
 	}
+	.blue {
+		border: 1px solid blue;
+	}
+}
+.round {
+	display: block;
+	border: 1px solid green;
 }

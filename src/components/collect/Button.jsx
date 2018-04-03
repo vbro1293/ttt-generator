@@ -1,7 +1,7 @@
 import React from "react";
 
-const Button = ({ isDisabled, children }) => (
-	<button disabled={ isDisabled }>{ children }</button>
+const Button = ({ isDisabled, children, onClick}) => (
+	<button onClick={ onClick } disabled={ isDisabled }>{ children }</button>
 )
 
 export default Button;

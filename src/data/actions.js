@@ -5,3 +5,9 @@ export const addPlayer = (value) => {
 		playerName: value,
 	}
 }
+
+export const resetPlayers = () => {
+	return {
+		type: "resetPlayers",
+	}
+}

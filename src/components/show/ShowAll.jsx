@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {Map} from "immutable";
 
 //===================Import Components
+import SubHeader from "../SubHeader";
 import GamePair from "./GamePair";
 
 class ShowAll extends Component {
@@ -72,6 +73,8 @@ class ShowAll extends Component {
 
 		return (
 			<section>
+					<SubHeader>Your dream tournament!</SubHeader>
+
 				{/* Map over array of pair objects, assigning players as props */}
 				{ !noOfByes ? rounds.map((round, i) => {
 					return (

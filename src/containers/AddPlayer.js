@@ -13,11 +13,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onSubmit: value => dispatch(addPlayer(value))
     };
-        
-    
 };
 
 // connect up mapDispatchToProps with the AddPlayer component
-// has to be the second argument - the first is for mapStateToProps
-// AddPlauer' props are now controlled by this file
 export default connect(null, mapDispatchToProps)(AddPlayer);

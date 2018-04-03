@@ -9,26 +9,39 @@ class Form extends Component {
 		super(props);
 
 		this.state = {
-			input: props.input.slice(),
+			input: "",
 		}
+		/* Bind methods to this */
 		this.submit = this.submit.bind(this);
+		// this.isDisabled = this.isDisabled.bind(this);
+	}
+	submit(e) {
+		/* Prevent auto reload */
+		e.preventDefault(); 
+
+		/* Pass state input data into onSubmit dispatch,which was passed down as props from addplayer container */
+		this.props.onSubmit(this.state.input);
+
+		/* Reset input field */
+		this.setState({input: "",})
 	}
 
-	submit(e) {
-		e.preventDefault(); 
-		let data = this.state.input;
-		this.props.onSubmit(data);
-	}
+	//Method called for input validation - no empty field and no repeated name else isDisabled is true
+	// isDisabled() {
+	// 	console.log(this.state.input)
+	// 	return ();
+	// }
 
 	change(e) {
+		/* Set local state to input value when typing */
 		this.setState({ input: e.target.value});
 	}
 
 	render() {
 		return(
 			<form className="add-players" onSubmit={ this.submit }>
-				<Input onChange={ e => this.change(e) } value={ this.state.value }/>
-				<Button className="button">Add Player</Button>
+				<Input onChange={ e => this.change(e) } value={ this.state.input }/>
+				<Button isDisabled={ this.state.input.length === 0 } className="button">Add Player</Button>
 			</form>
 		)
 	}

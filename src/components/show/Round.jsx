@@ -1,25 +1,19 @@
 import React from "react";
-import GamePair from "./GamePair";
+import Match from "./Match";
 
 
-const Round = ({ round, games, gamePairs, i }) => (
+const Round = ({ round, matches, i }) => (
 	<div>	
 		<h1>Round { round }</h1>
-		{ games[i].map((game, j) => 
+		{ matches[i].map((match, j) => 
 
-			(game==="pair") ?
-				<GamePair key={ j } />
+			(match === "pair") ?
+				<Match key={ j } />
 			:
-				<GamePair key={ j } bye={ true }/>
+				<Match key={ j } bye={ true }/>
 			
 		)}
 	</div>
 )
 
 export default Round;
-// 
-	// : 
-	// 		 	games[i].map((pair, j) => 
-	// 		 		<GamePair key={ j } />
-	// 		 	)
-	// 		}

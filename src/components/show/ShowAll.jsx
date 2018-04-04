@@ -2,12 +2,12 @@ import React from "react";
 
 //===================Import Components
 import SubHeader from "../SubHeader";
-import Rounds from "../../containers/Rounds";
+import Tournament from "../../containers/Tournament";
 
 const ShowAll = () => (
 	<main className="main">
 			<SubHeader>Your dream tournament!</SubHeader>
-			<Rounds />
+			<Tournament />
 	</main>
 )
 

@@ -1,7 +1,7 @@
 import React from "react";
 
-const GamePair = ({ player1, player2, bye }) => (
-	<div className="gamePair">
+const Match = ({ player1, player2, bye }) => (
+	<div className="match">
 		{ !bye ?
 			<p><span className="red">{ player1 }</span> PLAYS <span className="blue">{ player2 }</span></p>
 			:
@@ -10,4 +10,4 @@ const GamePair = ({ player1, player2, bye }) => (
 	</div>
 );
 
-export default GamePair;
+export default Match;

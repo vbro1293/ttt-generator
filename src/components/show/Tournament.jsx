@@ -4,18 +4,18 @@ import { Map } from "immutable";
 import Button from "../Button";
 import Round from "./Round";
 
-class Rounds extends Component {
+class Tournament extends Component {
 	constructor(props) {
 		super(props);
 		this.state = ({
-			gamePairs: [],
+			match: [],
 		})
-		this.gamePairs = this.gamePairs.bind(this)
+		this.match = this.match.bind(this)
 	}
 
 	componentDidMount(){
 		//------------Set state to random pairs on component mount
-		this.gamePairs();
+		this.match();
 	}
 
 	rounds() {
@@ -29,7 +29,7 @@ class Rounds extends Component {
 		return rounds;
 	}
 
-	gamePairs() {
+	match() {
 		const { players } = this.props;
 		//------------New array of players in randomised order
 		let playersLeft = players.slice().toJS();
@@ -43,7 +43,7 @@ class Rounds extends Component {
 		}
 
 		//-----------Creates an array of objects containing pairs
-		const gamePairs = ranPlayers.reduce((acc, val, i) => {
+		const match = ranPlayers.reduce((acc, val, i) => {
 			 if (i%2 === 0){
 				acc.push(Map({ p1: "", p2: "" }));
 				acc[Math.floor((i/2))]["p1"] = val;
@@ -54,18 +54,18 @@ class Rounds extends Component {
 				return acc;
 			}
 		}, []);
-		this.setState({ gamePairs: gamePairs })
+		this.setState({ match: match })
 	}
 
-	games() {
+	matches() {
 		//-----------Work out number of byes in first round
 		let noOfPlayers = this.props.players.size;
 		let noOfByes = 0;
-		let gamesFirstRound = 0;
+		let matchesFirstRound = 0;
 		if (Math.pow(noOfPlayers, 0.5)%2 !== 0) {
 			let n = 0;
 			while (Math.pow(2, n)<noOfPlayers){
-				gamesFirstRound=(Math.pow(2, n));
+				matchesFirstRound=(Math.pow(2, n));
 				n+=1;
 			}
 			noOfByes = Math.pow(2, n)-noOfPlayers;
@@ -74,26 +74,26 @@ class Rounds extends Component {
 		for (let i=noOfByes; i>0; i=i-1){
 			byes.push(i);
 		}
-		//-----------Array of number of games containing array of players
-		let games = [];
-		for (let i=gamesFirstRound; i>=1; i=i/2){
-			let game = [];
-			if (i=== gamesFirstRound){
+		//-----------Array of number of matches containing array of players
+		let matches = [];
+		for (let i=matchesFirstRound; i>=1; i=i/2){
+			let match = [];
+			if (i=== matchesFirstRound){
 				for (let k=0; k<noOfByes; k+=1){
-					game.push("bye");
+					match.push("bye");
 				}
 				for (let j=noOfByes; j<i; j+=1){
-					game.push("pair");
+					match.push("pair");
 				} 
 			}
 			else {
 				for (let k=0; k<i; k+=1){
-					game.push("pair");
+					match.push("pair");
 				}
 			}
-			games.push(game);
+			matches.push(match);
 		}
-		return games;
+		return matches;
 
 	}
 	
@@ -103,13 +103,13 @@ class Rounds extends Component {
 			{/* Map over array of pair objects, assigning players as props */}
 				
 				{this.rounds().map((round, i) => (
-					<Round key={ round } gamePairs={ this.state.gamePairs } games={ this.games() } i={i} round={ round }  />
+					<Round key={ round } match={ this.state.match } matches={ this.matches() } i={i} round={ round }  />
 				))}
 				
-				<Button onClick={ this.gamePairs }>Regenerate Tournament</Button>
+				<Button onClick={ this.match }>Regenerate Tournament</Button>
 			</section>
 		)
 	}
 }
 
-export default Rounds;
+export default Tournament;

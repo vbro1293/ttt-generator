@@ -3,7 +3,8 @@ import {Map} from "immutable";
 
 //===================Import Components
 import SubHeader from "../SubHeader";
-import GamePair from "./GamePair";
+
+import Round from "./Round";
 
 class ShowAll extends Component {
 	constructor(props) {
@@ -76,24 +77,7 @@ class ShowAll extends Component {
 					<SubHeader>Your dream tournament!</SubHeader>
 
 				{/* Map over array of pair objects, assigning players as props */}
-				{ !noOfByes ? rounds.map((round, i) => {
-					return (
-						<div key={ i } className="round">
-							<h1 >Round { round }</h1>
-							{/* Round 1 contains players names, other rounds have no names */}
-							{ round === 1 ? 
-								gamePairs.map((pair,i) => 
-									<GamePair key={ i } player1={ pair.p1 } player2 ={ pair.p2 } />
-								)
-							:
-								games[i].map((pair, j) => 
-									<GamePair key={ j } />
-								)
-							}
-							
-						</div>
-					)
-				})
+				{ !noOfByes ? rounds.map((round, i) => <Round round={ round } i={ i } gamePairs={ gamePairs } games={games}/>)
 				: "BYES NEEDED" }
 			</section>
 		)

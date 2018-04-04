@@ -8,14 +8,14 @@ class Tournament extends Component {
 	constructor(props) {
 		super(props);
 		this.state = ({
-			match: [],
+			matchPairs: [],
 		})
-		this.match = this.match.bind(this)
+		this.matchPairs = this.matchPairs.bind(this)
 	}
 
 	componentDidMount(){
 		//------------Set state to random pairs on component mount
-		this.match();
+		this.matchPairs();
 	}
 
 	rounds() {
@@ -29,7 +29,7 @@ class Tournament extends Component {
 		return rounds;
 	}
 
-	match() {
+	matchPairs() {
 		const { players } = this.props;
 		//------------New array of players in randomised order
 		let playersLeft = players.slice().toJS();
@@ -43,7 +43,7 @@ class Tournament extends Component {
 		}
 
 		//-----------Creates an array of objects containing pairs
-		const match = ranPlayers.reduce((acc, val, i) => {
+		const matchPairs = ranPlayers.reduce((acc, val, i) => {
 			 if (i%2 === 0){
 				acc.push(Map({ p1: "", p2: "" }));
 				acc[Math.floor((i/2))]["p1"] = val;
@@ -54,7 +54,7 @@ class Tournament extends Component {
 				return acc;
 			}
 		}, []);
-		this.setState({ match: match })
+		this.setState({ matchPairs: matchPairs })
 	}
 
 	matches() {
@@ -80,15 +80,15 @@ class Tournament extends Component {
 			let match = [];
 			if (i=== matchesFirstRound){
 				for (let k=0; k<noOfByes; k+=1){
-					match.push("bye");
+					match.push(false);
 				}
 				for (let j=noOfByes; j<i; j+=1){
-					match.push("pair");
+					match.push(true);
 				} 
 			}
 			else {
 				for (let k=0; k<i; k+=1){
-					match.push("pair");
+					match.push(true);
 				}
 			}
 			matches.push(match);
@@ -103,7 +103,7 @@ class Tournament extends Component {
 			{/* Map over array of pair objects, assigning players as props */}
 				
 				{this.rounds().map((round, i) => (
-					<Round key={ round } match={ this.state.match } matches={ this.matches() } i={i} round={ round }  />
+					<Round key={ round } matchPairs={ this.state.matchPairs } matches={ this.matches() } i={i} round={ round }  />
 				))}
 				
 				<Button onClick={ this.match }>Regenerate Tournament</Button>

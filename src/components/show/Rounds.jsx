@@ -84,20 +84,23 @@ class Rounds extends Component {
 			}
 			noOfByes = Math.pow(2, n)-noOfPlayers;
 		}
-		return noOfByes;
+		console.log(noOfByes)
+		let byes = [];
+		for (let i=noOfByes; i>0; i=i-1){
+			byes.push(i);
+		}
+		return byes;
 	}
 	
 	render() {
 		return(
 			<section className="tournament">
 			{/* Map over array of pair objects, assigning players as props */}
-				{ !this.noOfByes ? 
-					this.rounds().map((round, i) => (
-						<Round key={ round } gamePairs={ this.state.gamePairs } games={ this.games() } i={i} round={ round } />
-					))
-				: 
-					"BYES NEEDED"
-				}
+				
+					{this.rounds().map((round, i) => (
+						<Round key={ round } gamePairs={ this.state.gamePairs } games={ this.games() } i={i} round={ round } byes={ this.byes() }/>
+					))}
+				
 				<Button onClick={ this.gamePairs }>Regenerate Tournament</Button>
 			</section>
 		)
@@ -105,3 +108,7 @@ class Rounds extends Component {
 }
 
 export default Rounds;
+
+// { !this.noOfByes ? : 
+// 					"BYES NEEDED"
+// 				}

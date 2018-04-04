@@ -18,6 +18,17 @@ class Rounds extends Component {
 		this.gamePairs();
 	}
 
+	rounds() {
+		//-----------Work out number of rounds in tournament
+		let noOfPlayers = this.props.players.size;
+		let noOfRounds = Math.ceil(Math.log(noOfPlayers)/Math.log(2));
+		let rounds = [];
+		for (let i=1; i<=noOfRounds; i+=1){
+			rounds.push(i);
+		}
+		return rounds;
+	}
+
 	gamePairs() {
 		const { players } = this.props;
 		//------------New array of players in randomised order
@@ -46,17 +57,6 @@ class Rounds extends Component {
 		this.setState({ gamePairs: gamePairs })
 	}
 
-	rounds() {
-		//-----------Work out number of rounds in tournament
-		let noOfPlayers = this.props.players.size;
-		let noOfRounds = Math.log(noOfPlayers)/Math.log(2);
-		let rounds = [];
-		for (let i=1; i<=noOfRounds; i+=1){
-			rounds.push(i);
-		}
-		return rounds;
-	}
-
 	games() {
 		//-----------Work out number of byes in first round
 		let noOfPlayers = this.props.players.size;
@@ -75,19 +75,22 @@ class Rounds extends Component {
 			byes.push(i);
 		}
 		//-----------Array of number of games containing array of players
-		// let noOfPlayers = this.props.players.size;
 		let games = [];
-		// let gamesFirstRound = Math.ceil(noOfPlayers/2);
 		for (let i=gamesFirstRound; i>=1; i=i/2){
 			let game = [];
 			if (i=== gamesFirstRound){
 				for (let k=0; k<noOfByes; k+=1){
 					game.push("bye");
 				}
+				for (let j=noOfByes; j<i; j+=1){
+					game.push("pair");
+				} 
 			}
-			for (let j=noOfByes; j<i; j+=1){
-				game.push("pair");
-			} 
+			else {
+				for (let k=0; k<i; k+=1){
+					game.push("pair");
+				}
+			}
 			games.push(game);
 		}
 		return games;
@@ -99,9 +102,9 @@ class Rounds extends Component {
 			<section className="tournament">
 			{/* Map over array of pair objects, assigning players as props */}
 				
-					{this.rounds().map((round, i) => (
-						<Round key={ round } gamePairs={ this.state.gamePairs } games={ this.games() } i={i} round={ round }  />
-					))}
+				{this.rounds().map((round, i) => (
+					<Round key={ round } gamePairs={ this.state.gamePairs } games={ this.games() } i={i} round={ round }  />
+				))}
 				
 				<Button onClick={ this.gamePairs }>Regenerate Tournament</Button>
 			</section>
@@ -110,8 +113,3 @@ class Rounds extends Component {
 }
 
 export default Rounds;
-
-// { !this.noOfByes ? : 
-// 					"BYES NEEDED"
-// 				}
-// byes={ this.byes()

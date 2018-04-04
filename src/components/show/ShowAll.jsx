@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import {Map} from "immutable";
 
 //===================Import Components
 import SubHeader from "../SubHeader";
 
-import Round from "./Round";
+import Round from "../../containers/Round";
 
 class ShowAll extends Component {
 	constructor(props) {
@@ -19,29 +18,7 @@ class ShowAll extends Component {
 	render () {
 		const { players } = this.state;
 
-		//------------New array of players in randomised order
-		let playersLeft = players.slice(); //retwritten
-		let ranPlayers = [];
-		let count = players.length;
-		while(count>0){
-			const i = Math.floor(Math.random()*playersLeft.length);
-			const player = playersLeft.splice( i, 1 )[0];
-			ranPlayers.push(player);
-			count -= 1;
-		}
-		
-		//-----------Creates an array of objects containing pairs
-		const gamePairs = ranPlayers.reduce((acc, val, i) => {
-			 if (i%2 === 0){
-				acc.push(Map({ p1: "", p2: "" }));
-				acc[Math.floor((i/2))]["p1"] = val;
-				return acc;
-			}
-			else {
-				acc[Math.floor(i/2)]["p2"] = val;
-				return acc;
-			}
-		}, []);		
+			
 		
 		//-----------Work out number of byes in first round
 		let noOfPlayers = players.length;
@@ -77,7 +54,7 @@ class ShowAll extends Component {
 					<SubHeader>Your dream tournament!</SubHeader>
 
 				{/* Map over array of pair objects, assigning players as props */}
-				{ !noOfByes ? rounds.map((round, i) => <Round round={ round } i={ i } gamePairs={ gamePairs } games={games}/>)
+				{ !noOfByes ? rounds.map((round, i) => <Round key={ i } round={ round } i={ i } games={games}/>)
 				: "BYES NEEDED" }
 			</section>
 		)

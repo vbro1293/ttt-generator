@@ -6,10 +6,10 @@ const addPlayer = (state, { playerName }) => state.update("players", players => 
 
 const reducer = (state, action) => {
 	switch (action.type) {
-		//Action called when "add player" button pressed - adds input value to state
+		//"add player" button pressed - adds input value to state
 		case "addPlayer": return addPlayer(state, action);
 		
-		//Action called when "reset" button pressed - adds input value to state
+		//"reset" button pressed - adds input value to state
 		case "resetPlayers": return initial;
 		
 		default: return state;

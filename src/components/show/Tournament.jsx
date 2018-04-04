@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Map } from "immutable";
 
 import Button from "../Button";
 import Round from "./Round";
@@ -8,108 +7,104 @@ class Tournament extends Component {
 	constructor(props) {
 		super(props);
 		this.state = ({
-			matchPairs: [],
+			rounds: [],
 		})
-		this.matchPairs = this.matchPairs.bind(this)
+		this.rounds = this.rounds.bind(this)
 	}
-
 	componentDidMount(){
-		//------------Set state to random pairs on component mount
-		this.matchPairs();
+		//------------Set state on component mount
+		this.rounds();
 	}
-
 	rounds() {
 		//-----------Work out number of rounds in tournament
-		let noOfPlayers = this.props.players.size;
+		const { players } = this.props;
+		let noOfPlayers = players.size;
 		let noOfRounds = Math.ceil(Math.log(noOfPlayers)/Math.log(2));
 		let rounds = [];
-		for (let i=1; i<=noOfRounds; i+=1){
-			rounds.push(i);
-		}
-		return rounds;
-	}
-
-	matchPairs() {
-		const { players } = this.props;
+		for (let i=0; i<noOfRounds; i+=1){
+			rounds.push([]);
+		};
+		
 		//------------New array of players in randomised order
 		let playersLeft = players.slice().toJS();
 		let ranPlayers = [];
-		let count = players.size;
-		while(count>0){
-			let i = Math.floor(Math.random()*playersLeft.length);
-			let player = playersLeft.splice( i, 1 );
+		for(let i=0; i<players.size; i+=1){
+			let j = Math.floor(Math.random()*playersLeft.length);
+			let player = playersLeft.splice( j, 1 );
 			ranPlayers.push(player[0])
-			count -= 1;
 		}
-
-		//-----------Creates an array of objects containing pairs
-		const matchPairs = ranPlayers.reduce((acc, val, i) => {
-			 if (i%2 === 0){
-				acc.push(Map({ p1: "", p2: "" }));
-				acc[Math.floor((i/2))]["p1"] = val;
-				return acc;
-			}
-			else {
-				acc[Math.floor(i/2)]["p2"] = val;
-				return acc;
-			}
-		}, []);
-		this.setState({ matchPairs: matchPairs })
-	}
-
-	matches() {
+		
 		//-----------Work out number of byes in first round
-		let noOfPlayers = this.props.players.size;
 		let noOfByes = 0;
 		let matchesFirstRound = 0;
-		if (Math.pow(noOfPlayers, 0.5)%2 !== 0) {
-			let n = 0;
-			while (Math.pow(2, n)<noOfPlayers){
-				matchesFirstRound=(Math.pow(2, n));
-				n+=1;
-			}
-			noOfByes = Math.pow(2, n)-noOfPlayers;
+		let n = 0;
+		while (Math.pow(2, n)<noOfPlayers){
+			matchesFirstRound=(Math.pow(2, n));
+			n+=1;
 		}
-		let byes = [];
-		for (let i=noOfByes; i>0; i=i-1){
-			byes.push(i);
-		}
-		//-----------Array of number of matches containing array of players
-		let matches = [];
-		for (let i=matchesFirstRound; i>=1; i=i/2){
-			let match = [];
-			if (i=== matchesFirstRound){
-				for (let k=0; k<noOfByes; k+=1){
-					match.push(false);
-				}
-				for (let j=noOfByes; j<i; j+=1){
-					match.push(true);
-				} 
+		noOfByes = Math.pow(2, n)-noOfPlayers;
+
+		let playedMatches = matchesFirstRound - noOfByes;
+		let playersFirstRound = playedMatches * 2;
+
+
+		//-----------Creates an array of objects containing pairs
+		let firstPlayers = ranPlayers.splice(0, playersFirstRound)
+		let secondPlayers = ranPlayers;
+		firstPlayers.map((player, i)=> {
+			if (i%2 === 0){
+				let match = {p1: player, p2: "", bye:false};
+				return rounds[0].push(match);
 			}
 			else {
-				for (let k=0; k<i; k+=1){
-					match.push(true);
-				}
+				return rounds[0][(i-1)/2]["p2"] = player;
 			}
-			matches.push(match);
-		}
-		return matches;
+		})
 
+		for (let i=0; i<noOfByes; i+=1){
+			rounds[0].push({p1: "?", p2: "?", bye: true})
+		}
+
+		secondPlayers.map((player, i)=> {
+			if (i%2 === 0){
+				let match = {p1: player, p2: "", bye:false};
+				return rounds[1].push(match);
+			}
+			else {
+				return rounds[1][(i-1)/2]["p2"] = player;
+			}
+		})
+		
+		//future matches
+		let matches = matchesFirstRound;
+		rounds.map((round) => {
+			let currentLength = round.length;
+			if (!(matches === currentLength)){
+				for (let j=0; j<(matches-currentLength); j+=1){
+					round.push({p1:"?", p2:"?", bye:false})
+				};
+			}
+			return matches = matches/2;	
+		})
+		this.setState({ rounds: rounds});
 	}
 	
 	render() {
+		const { rounds } = this.state;
 		return(
 			<section className="tournament">
 			{/* Map over array of pair objects, assigning players as props */}
+					{rounds.map((round, i) => 
+						<Round key={ i } round={round} roundNum={ i+1 }/>
+					)}
 				
-				{this.rounds().map((round, i) => (
-					<Round key={ round } matchPairs={ this.state.matchPairs } matches={ this.matches() } i={i} round={ round }  />
-				))}
-				
-				<Button onClick={ this.match }>Regenerate Tournament</Button>
+				<Button onClick={ this.rounds }>Regenerate Tournament</Button>
 			</section>
 		)
 	}
 }
 
 export default Tournament;
+// {this.rounds().map((round, i) => (
+// 					<Round key={ round } matchPairs={ firstRoundPairs } matches={ this.matches() } i={i} round={ round }  />
+// 				))}

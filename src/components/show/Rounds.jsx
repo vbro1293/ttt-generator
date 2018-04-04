@@ -58,38 +58,40 @@ class Rounds extends Component {
 	}
 
 	games() {
-		//-----------Array of number of games containing array of players
-		let noOfPlayers = this.props.players.size;
-		let games = [];
-		let gamesPerRound = noOfPlayers/2;
-		for (let i=gamesPerRound; i>=1; i=i/2){
-			let pair = [];
-			for (let j=0; j<i; j+=1){
-				pair.push(j);
-			} 
-			games.push(pair);
-		}
-		return games;
-
-	}
-
-	byes() {
 		//-----------Work out number of byes in first round
 		let noOfPlayers = this.props.players.size;
 		let noOfByes = 0;
+		let gamesFirstRound = 0;
 		if (Math.pow(noOfPlayers, 0.5)%2 !== 0) {
 			let n = 0;
 			while (Math.pow(2, n)<noOfPlayers){
+				gamesFirstRound=(Math.pow(2, n));
 				n+=1;
 			}
 			noOfByes = Math.pow(2, n)-noOfPlayers;
 		}
-		console.log(noOfByes)
 		let byes = [];
 		for (let i=noOfByes; i>0; i=i-1){
 			byes.push(i);
 		}
-		return byes;
+		//-----------Array of number of games containing array of players
+		// let noOfPlayers = this.props.players.size;
+		let games = [];
+		// let gamesFirstRound = Math.ceil(noOfPlayers/2);
+		for (let i=gamesFirstRound; i>=1; i=i/2){
+			let game = [];
+			if (i=== gamesFirstRound){
+				for (let k=0; k<noOfByes; k+=1){
+					game.push("bye");
+				}
+			}
+			for (let j=noOfByes; j<i; j+=1){
+				game.push("pair");
+			} 
+			games.push(game);
+		}
+		return games;
+
 	}
 	
 	render() {
@@ -98,7 +100,7 @@ class Rounds extends Component {
 			{/* Map over array of pair objects, assigning players as props */}
 				
 					{this.rounds().map((round, i) => (
-						<Round key={ round } gamePairs={ this.state.gamePairs } games={ this.games() } i={i} round={ round } byes={ this.byes() }/>
+						<Round key={ round } gamePairs={ this.state.gamePairs } games={ this.games() } i={i} round={ round }  />
 					))}
 				
 				<Button onClick={ this.gamePairs }>Regenerate Tournament</Button>
@@ -112,3 +114,4 @@ export default Rounds;
 // { !this.noOfByes ? : 
 // 					"BYES NEEDED"
 // 				}
+// byes={ this.byes()

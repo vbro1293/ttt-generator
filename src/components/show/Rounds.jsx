@@ -1,23 +1,36 @@
 import React, { Component } from "react";
 import { Map } from "immutable";
 
-import GamePair from "./GamePair";
+import Button from "../Button";
+import Round from "./Round";
 
-class Round extends Component {
-	
+class Rounds extends Component {
+	constructor(props) {
+		super(props);
+		this.state = ({
+			gamePairs: [],
+		})
+		this.gamePairs = this.gamePairs.bind(this)
+	}
+
+	componentDidMount(){
+		//------------Set state to random pairs on component mount
+		this.gamePairs();
+	}
+
 	gamePairs() {
 		const { players } = this.props;
 		//------------New array of players in randomised order
-		let playersLeft = players.slice().toJS(); //rewritten
+		let playersLeft = players.slice().toJS();
 		let ranPlayers = [];
 		let count = players.size;
-
 		while(count>0){
 			let i = Math.floor(Math.random()*playersLeft.length);
 			let player = playersLeft.splice( i, 1 );
 			ranPlayers.push(player[0])
 			count -= 1;
 		}
+
 		//-----------Creates an array of objects containing pairs
 		const gamePairs = ranPlayers.reduce((acc, val, i) => {
 			 if (i%2 === 0){
@@ -30,7 +43,7 @@ class Round extends Component {
 				return acc;
 			}
 		}, []);
-		return gamePairs;
+		this.setState({ gamePairs: gamePairs })
 	}
 
 	rounds() {
@@ -61,8 +74,8 @@ class Round extends Component {
 	}
 
 	byes() {
-		let noOfPlayers = this.props.players.size;
 		//-----------Work out number of byes in first round
+		let noOfPlayers = this.props.players.size;
 		let noOfByes = 0;
 		if (Math.pow(noOfPlayers, 0.5)%2 !== 0) {
 			let n = 0;
@@ -80,25 +93,15 @@ class Round extends Component {
 			{/* Map over array of pair objects, assigning players as props */}
 				{ !this.noOfByes ? 
 					this.rounds().map((round, i) => (
-						<div key={ round }>
-							<h1>Round { round }</h1>
-							{/* Round 1 contains players names, other rounds have no names */}
-							{ round === 1 ? 
-								this.gamePairs().map((pair, i) => 
-									<GamePair key={ i } player1={ pair.p1 } player2 ={ pair.p2 } />
-								)
-							:
-								this.games()[i].map((pair, j) => 
-									<GamePair key={ j } />
-								)
-							}
-						</div>
+						<Round key={ round } gamePairs={ this.state.gamePairs } games={ this.games() } i={i} round={ round } />
 					))
-				: "BYES NEEDED" }
-					
+				: 
+					"BYES NEEDED"
+				}
+				<Button onClick={ this.gamePairs }>Regenerate Tournament</Button>
 			</section>
 		)
 	}
 }
 
-export default Round;
+export default Rounds;

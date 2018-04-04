@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 //================Import components
 import Input from "./Input";
-import Button from "./Button";
+import Button from "../Button";
 
 class Form extends Component {
 	constructor(props){

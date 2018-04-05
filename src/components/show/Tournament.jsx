@@ -1,20 +1,9 @@
 import React, { Component } from "react";
 
-import Button from "../Button";
-import Round from "./Round";
+import RouteLink from "../../containers/RouteLink";
+import Rounds from "./Rounds";
 
 class Tournament extends Component {
-	constructor(props) {
-		super(props);
-		this.state = ({
-			rounds: [],
-		})
-		this.rounds = this.rounds.bind(this)
-	}
-	componentDidMount(){
-		//------------Set state on component mount
-		this.rounds();
-	}
 	rounds() {
 		//-----------Work out number of rounds in tournament
 		const { players } = this.props;
@@ -81,24 +70,24 @@ class Tournament extends Component {
 			let currentLength = round.length;
 			if (!(matches === currentLength)){
 				for (let j=0; j<(matches-currentLength); j+=1){
-					round.push({p1:"?", p2:"?", bye:false})
+					round.push({p1: "?", p2: "?", bye: false})
 				};
 			}
 			return matches = matches/2;	
 		})
-		this.setState({ rounds: rounds});
+
+		return rounds;
 	}
 	
 	render() {
-		const { rounds } = this.state;
 		return(
 			<section className="tournament">
-			{/* Map over array of pair objects, assigning players as props */}
-					{rounds.map((round, i) => 
-						<Round key={ i } round={round} roundNum={ i+1 }/>
-					)}
-				
-				<Button onClick={ this.rounds }>Regenerate Tournament</Button>
+				{/* Check players in store */}
+				{ this.props.players.size >=4 ?
+					<Rounds rounds={ this.rounds() } />
+				:
+					<RouteLink>Build your tournament!</RouteLink>
+				}
 			</section>
 		)
 	}

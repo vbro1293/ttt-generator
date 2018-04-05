@@ -14,10 +14,10 @@ const PlayersList = ({ children, players, onClick }) => (
 						<PlayerItem key={ i }>{ player }</PlayerItem>
 					)}
 				</ul>
-				<Button onClick={ onClick }>Reset</Button>
+				<Button onClick={ onClick } classes="ball">Reset</Button>
 			</section>
 		:
-			<h4>Type a players name into the input box, to add them to the tournament</h4>
+			null
 		}
 	</section>
 )

@@ -10,7 +10,7 @@ import RouteLink from "../../containers/RouteLink";
 
 const Collect = () => (
 	<main className="main">
-		<SubHeader>Fill in each players name in the box below and click generate to reveal your dream tournament</SubHeader>
+		<SubHeader>Please add at least 4 players to your tournament</SubHeader>
 		<AddPlayer />
 		<PlayersList>Players</PlayersList>
 		<RouteLink>Generate Tournament</RouteLink>

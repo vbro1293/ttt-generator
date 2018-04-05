@@ -1,7 +1,7 @@
 import React from "react";
 
 const PlayerItem = ({ children }) => (
-	<li>{ children }</li>
+	<li className="playerListItem">{ children }</li>
 )
 
 export default PlayerItem;

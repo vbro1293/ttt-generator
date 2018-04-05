@@ -6,14 +6,16 @@ import Button from "../Button";
 
 const PlayersList = ({ children, players, onClick }) => (
 	<section>
-		<h2>{ children }</h2>
-		<ul>
-			{ players.map((player, i) => 
-				<PlayerItem key={ i }>{ player }</PlayerItem>
-			)}
-		</ul>
 		{ players.size ? 
-			<Button onClick={ onClick }>Reset</Button>
+			<section>
+				<h2>{ children }</h2>
+				<ul>
+					{ players.map((player, i) => 
+						<PlayerItem key={ i }>{ player }</PlayerItem>
+					)}
+				</ul>
+				<Button onClick={ onClick } classes="ball">Reset</Button>
+			</section>
 		:
 			null
 		}

@@ -6,16 +6,18 @@ import Button from "../Button";
 
 const PlayersList = ({ children, players, onClick }) => (
 	<section>
-		<h2>{ children }</h2>
-		<ul>
-			{ players.map((player, i) => 
-				<PlayerItem key={ i }>{ player }</PlayerItem>
-			)}
-		</ul>
 		{ players.size ? 
-			<Button onClick={ onClick }>Reset</Button>
+			<section>
+				<h2>{ children }</h2>
+				<ul>
+					{ players.map((player, i) => 
+						<PlayerItem key={ i }>{ player }</PlayerItem>
+					)}
+				</ul>
+				<Button onClick={ onClick }>Reset</Button>
+			</section>
 		:
-			null
+			<h4>Type a players name into the input box, to add them to the tournament</h4>
 		}
 	</section>
 )

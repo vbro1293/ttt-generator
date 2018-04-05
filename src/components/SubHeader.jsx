@@ -1,7 +1,7 @@
 import React from "react";
 
 const SubHeader = ({ children }) => (
-	<h3>{ children }</h3>
+	<h4>{ children }</h4>
 )
 
 export default SubHeader;

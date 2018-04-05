@@ -6,14 +6,14 @@ import React from "react";
 import SubHeader from "../SubHeader";
 import PlayersList from "../../containers/PlayersList";
 import AddPlayer from "../../containers/AddPlayer";
-import GenerateLink from "../../containers/GenerateLink";
+import RouteLink from "../../containers/RouteLink";
 
 const Collect = () => (
 	<main className="main">
-		<SubHeader>Fill in each players name in the box below and click generate to reveal your dream tournament</SubHeader>
+		<SubHeader>Please add at least 4 players to your tournament</SubHeader>
 		<AddPlayer />
-		<PlayersList />
-		<GenerateLink>Generate Tournament</GenerateLink>
+		<PlayersList>Players</PlayersList>
+		<RouteLink>Generate Tournament</RouteLink>
 	</main>
 )
 

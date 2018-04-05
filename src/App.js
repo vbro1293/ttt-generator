@@ -16,7 +16,7 @@ import ShowAll from "./components/show/ShowAll";
 const App = () => (
 	<div>
 		{ /* header shows on all pages*/ }
-		<Header>TableTennisTournamentGenerator</Header>
+		<Header><span role="img" aria-label="paddle">🏓</span> Table Tennis Tournament <span role="img" aria-label="paddle">🏓</span><br /> Generator</Header>
 
 		{ /* route  switch - to handle 404s */ }
 		<Switch>

@@ -105,6 +105,3 @@ class Tournament extends Component {
 }
 
 export default Tournament;
-// {this.rounds().map((round, i) => (
-// 					<Round key={ round } matchPairs={ firstRoundPairs } matches={ this.matches() } i={i} round={ round }  />
-// 				))}

@@ -1,0 +1,61 @@
+//======================
+//General, repeated
+//======================
+h1 {
+	font-size: 1.4em;
+}
+h2 {
+	font-size: 1.3em;
+}
+h4 {
+	font-size: 0.9em;
+	font-style: italic;
+}
+.button {
+	padding: 5px 10px;
+	margin: 10px 5px;
+	background: $color4;
+	border: 1px solid $color5;
+	border-radius: 5px;
+	font-weight: bold;
+}
+.main {
+
+}
+
+//======================
+//Collect page
+//======================
+form {
+	width: 80%;
+	padding: 5px;
+	margin: auto;
+	input {
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 5px 10px;
+		text-align: center;
+		font-size: 1.3em;
+		&:focus {
+			border: 1px solid $color1;
+		}
+	}
+}
+
+ul {
+	padding: 5px;
+	li {
+		list-style: none;
+		padding: 5px;
+	}
+}
+a {
+	text-decoration: none;
+	color: $color5;
+}
+
+
+//======================
+//Show page
+//======================

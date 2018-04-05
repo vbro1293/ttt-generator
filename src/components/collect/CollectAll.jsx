@@ -12,7 +12,7 @@ const Collect = () => (
 	<main className="main">
 		<SubHeader>Fill in each players name in the box below and click generate to reveal your dream tournament</SubHeader>
 		<AddPlayer />
-		<PlayersList />
+		<PlayersList>Players</PlayersList>
 		<GenerateLink>Generate Tournament</GenerateLink>
 	</main>
 )

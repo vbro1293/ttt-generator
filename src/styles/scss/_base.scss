@@ -49,6 +49,9 @@ body {
 	color: $color4;
 	transition: all 0.2s ease-in;
 	background: $color5;
+	&:focus {
+		outline: none;
+	}
 }
 
 .ball {

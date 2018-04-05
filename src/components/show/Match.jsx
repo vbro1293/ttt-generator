@@ -3,13 +3,13 @@ import React from "react";
 const Match = ({ player1, player2, bye }) => (
 	<div className="match">
 		{ !bye ?
-			<p>
-				<span className="red">{ player1 }</span> 
-				 PLAYS  
-				<span className="blue">{ player2 }</span>
-			</p>
+			<div className="players">
+				<div className="player"><p>{ player1 }</p></div> 
+				<p className="plays">⚬ vs ⚬</p>  
+				<div className="player"><p>{ player2 }</p></div>
+			</div>
 		:
-			<p>BYE</p>
+			<p className="bye">BYE</p>
 		}
 	</div>
 );

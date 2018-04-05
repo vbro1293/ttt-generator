@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List} from "immutable";
+import { List } from "immutable";
 import RouteLink from "../../containers/RouteLink";
 import Rounds from "./Rounds";
 import Button from "../Button";
@@ -7,7 +7,6 @@ import Button from "../Button";
 class Tournament extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			rounds: List([]),
 		};
@@ -73,7 +72,7 @@ class Tournament extends Component {
 
 			secondPlayers.map((player, i)=> {
 				if (i%2 === 0){
-					let match = {p1: player, p2: "", bye:false};
+					let match = {p1: player, p2: "?", bye:false};
 					return rounds[1].push(match);
 				}
 				else {

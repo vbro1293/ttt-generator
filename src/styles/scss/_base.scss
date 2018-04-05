@@ -6,6 +6,9 @@ h1 {
 }
 h2 {
 	font-size: 1.3em;
+	text-decoration: underline;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
 }
 h4 {
 	font-size: 0.9em;
@@ -14,24 +17,35 @@ h4 {
 .button {
 	display: block;
 	padding: 10px 15px;
-	margin: 5px auto;
+	margin: auto;
+	margin-top: 10px;
 	background: $color4;
 	border: 1px solid $color5;
 	border-radius: 5px;
 	font-weight: bold;
 }
-a.button {
-	width: 50%;
-	text-decoration: none;
+.isDisabled {
 	color: $color5;
 }
-.isDisabled {
-	background: red;
+a.button{
+	width: 60%;
+	text-decoration: none;
+	color: #000;
+	font-weight: bold;
+	margin-top: 20px;
 }
 .main {
-
+	background: $color1;
+}
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
 }
 
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
 //======================
 //Collect page
 //======================
@@ -48,13 +62,13 @@ form {
 		font-size: 1.3em;
 		border-radius: 5px;
 		&:focus {
-			// border: 1px solid $color1;
+
 		}
 	}
 }
 
 ul {
-	padding: 5px;
+	padding: 0px 5px;
 	li {
 		list-style: none;
 		padding: 5px;
@@ -66,3 +80,26 @@ ul {
 //======================
 //Show page
 //======================
+.rounds {
+
+}
+.round {
+
+}
+.match {
+	display: block;
+	border: 1px solid blue;
+
+}
+.player {
+	display: inline-block;
+	font-weight: bold;
+}
+.plays {
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.bye {
+
+}

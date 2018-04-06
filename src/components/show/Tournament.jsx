@@ -18,7 +18,7 @@ class Tournament extends Component {
 		this.rounds();
 	}
 
-	rounds() {
+	rounds(){
 		//-----------Work out number of rounds in tournament
 		const { players } = this.props;
 		let noOfPlayers = players.size;

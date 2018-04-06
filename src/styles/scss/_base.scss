@@ -1,6 +1,13 @@
 //======================
 //General, repeated
 //======================
+body {
+	background-image: linear-gradient(to bottom, $opacityBackground2 0%,$opacityBackground2 100%), url('../../media/background2.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	min-height: 96vh;
+}
+
 h1 {
 	font-size: 1.8em;
 	color: $color4;
@@ -26,12 +33,6 @@ h4 {
 	font-style: italic;
 	margin: 0px;
 	padding: 20px 10px;
-}
-body {
-	background-image: linear-gradient(to bottom, $opacityBackground2 0%,$opacityBackground2 100%), url('../../media/background2.png');
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	min-height: 96vh;
 }
 
 .main {
@@ -83,7 +84,7 @@ form {
 	padding: 5px;
 	input {
 		display: block;
-		width: 70%;
+		width: 75%;
 		margin: auto;
 		padding: 10px 10px;
 		font-size: 1.5em;
@@ -126,20 +127,40 @@ ul {
 .rounds {
 
 }
+
 .round {
 
 }
+
 .match {
 	display: block;
 	border-top: 1px solid $color2;
-
 }
+
 .player, .bye {
 	display: inline-block;
 	font-weight: bold;
 }
+
 .plays {
 	display: inline-block;
 	margin-left: 5px;
 	margin-right: 5px;
+}
+
+.nextPlayer {
+	position: absolute;
+	left: 30px;
+	bottom: -40px;
+	font-size: 0.9em;
+	font-weight: normal;
+	background: $color7;
+	color: $color4;
+	border-radius: 50%;
+	padding: 10px;
+}
+
+.questionMark {
+	position: relative;
+	cursor: pointer;
 }

@@ -2,10 +2,11 @@
 //General, repeated
 //======================
 body {
-	background-image: linear-gradient(to bottom, $opacityBackground2 0%,$opacityBackground2 100%), url('../../media/background2.png');
+	background-image: linear-gradient(to bottom, $opacityBackground2 0%,$opacityBackground2 100%), url("../../media/background2.png");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	min-height: 96vh;
+	font-size: 16px;
 }
 
 h1 {
@@ -13,7 +14,7 @@ h1 {
 	color: $color4;
 	margin: 0px;
 	padding: 30px 10px 20px 10px;
-	background-image: linear-gradient(to bottom, $opacityBackground1 0%,$opacityBackground1 100%), url('../../media/background1.png');
+	background-image: linear-gradient(to bottom, $opacityBackground1 0%,$opacityBackground1 100%), url("../../media/background1.png");
 	background-size: 100% 100%;
 }
 
@@ -151,6 +152,20 @@ ul {
 	display: inline-block;
 	margin-left: 5px;
 	margin-right: 5px;
+}
+
+.players {
+	position: relative;
+}
+
+.player:first-child {
+	position: absolute;
+	left: 65%;
+}
+
+.player:last-child {
+	position: absolute;
+	right: 65%;
 }
 
 .nextPlayer {

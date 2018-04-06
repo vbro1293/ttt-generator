@@ -38,7 +38,6 @@ h4 {
 .main {
 	padding: 0px 10px;
 }
-
 .button {
 	font-size: 1.1em;
 	display: block;
@@ -52,6 +51,9 @@ h4 {
 	background: $color5;
 	&:focus {
 		outline: none;
+	}
+	&:hover {
+		color: $color9;
 	}
 }
 
@@ -69,6 +71,9 @@ h4 {
 .isDisabled, a.isDisabled {
 	color: $color5;
 	background: $color7;
+	&:hover {
+		color: $color5;
+	}
 }
 
 a {
@@ -163,4 +168,8 @@ ul {
 .questionMark {
 	position: relative;
 	cursor: pointer;
+}
+
+.randomise, .add, .clear {
+	font-size: 1.8em;
 }

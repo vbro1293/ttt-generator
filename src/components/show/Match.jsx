@@ -8,9 +8,9 @@ const Match = ({ player1, player2, bye, roundNum }) => {
 		<div className="match">
 			{ !bye ?
 				<div className="players">
-					<Player player={ player1 } prevRound= { prevRound }/>
+					<Player player={ player1 } prevRound={ prevRound }/>
 					<p className="plays"> ⚬ vs ⚬ </p>  
-					<Player player={ player2 } prevRound= { prevRound }/>
+					<Player player={ player2 } prevRound={ prevRound }/>
 				</div>
 			:
 				<p className="bye">BYE</p>

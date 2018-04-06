@@ -14,7 +14,7 @@ const PlayersList = ({ children, players, onClick }) => (
 						<PlayerItem key={ i }>{ player }</PlayerItem>
 					)}
 				</ul>
-				<Button onClick={ onClick } classes="ball">Reset</Button>
+				<Button onClick={ onClick } classes="ball"><span role="img" aria-label="clear" className="clear">❌</span></Button>
 			</section>
 		:
 			null

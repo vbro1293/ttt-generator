@@ -35,7 +35,7 @@ class Form extends Component {
 		return(
 			<form className="add-players" onSubmit={ this.submit }>
 				<Input onChange={ e => this.change(e) } value={ this.state.input }/>
-				<Button isDisabled={ this.state.input.length === 0 } classes="ball">Add</Button>
+				<Button isDisabled={ this.state.input.length === 0 } classes="ball"><span role="img" aria-label="add" className="add">➕</span></Button>
 			</form>
 		)
 	}

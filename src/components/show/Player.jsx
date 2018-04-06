@@ -23,7 +23,7 @@ class Player extends Component {
 			<div className="player">
 				{ player==="?" ? 
 					<div className="questionMark">
-						<p onMouseOver={ this.clicked }>{ player }</p>
+						<p onMouseEnter={ this.clicked } onMouseLeave={ this.clicked }>{ player }</p>
 						{ this.state.clicked ? 
 							<p className="nextPlayer">{ "Round "+ prevRound + " winner"}</p>
 						: 

@@ -105,7 +105,7 @@ class Tournament extends Component {
 				{ this.props.players.size >=4 ?
 					<section className="rounds">
 						<Rounds rounds={ this.state.rounds }/>
-						<Button onClick={ this.rounds } classes={ "ball" }>Regenerate</Button>
+						<Button onClick={ this.rounds } classes={ "ball" }><span role="img" aria-label="shuffle" className="randomise">🔀</span></Button>
 						<RouteLink needsDisabling={ false } goHome={true}>Restart</RouteLink>
 					</section>
 				:

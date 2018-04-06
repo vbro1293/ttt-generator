@@ -131,10 +131,10 @@ ul {
 }
 .match {
 	display: block;
-	border: 1px solid blue;
+	border-top: 1px solid $color2;
 
 }
-.player {
+.player, .bye {
 	display: inline-block;
 	font-weight: bold;
 }
@@ -142,7 +142,4 @@ ul {
 	display: inline-block;
 	margin-left: 5px;
 	margin-right: 5px;
-}
-.bye {
-
 }

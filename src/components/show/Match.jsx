@@ -5,7 +5,7 @@ const Match = ({ player1, player2, bye }) => (
 		{ !bye ?
 			<div className="players">
 				<div className="player"><p>{ player1 }</p></div> 
-				<p className="plays">⚬ vs ⚬</p>  
+				<p className="plays">⚬ vs ⚬ </p>  
 				<div className="player"><p>{ player2 }</p></div>
 			</div>
 		:

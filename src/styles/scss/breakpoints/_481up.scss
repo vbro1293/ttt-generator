@@ -6,6 +6,12 @@ body {
 	font-size: 18px;
 }
 
+.ball {
+	height: 70px;
+	width: 70px;
+	border-top-width: 2px;
+}
+
 
 //======================
 //Collect page
@@ -17,14 +23,15 @@ form input {
 	}
 }
 
+.delete {
+	height: 45px;
+	width: 45px;
+}
+
 //======================
 //Show page
 //======================
-.ball {
-	height: 70px;
-	width: 70px;
-	border-top-width: 2px;
-}
+
 
 .match {
 	width: 60%;

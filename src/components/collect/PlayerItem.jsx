@@ -9,16 +9,14 @@ class PlayerItem extends Component {
 
 	render(){
 		return(
-			<div>
-				<li className="playerListItem">
-					{ this.props.player }
-					<Button onClick={ this.onClickDel.bind(this) } classes="ball">
-						<span role="img" aria-label="delete" className="delete">
-							➖
-						</span>
-					</Button>
-				</li>
-			</div>
+			<li className="playerListItem">
+				<p className="playerItem">{ this.props.player }</p>
+				<Button onClick={ this.onClickDel.bind(this) } classes="ball delete">
+					<span role="img" aria-label="delete">
+						➖
+					</span>
+				</Button>
+			</li>
 		)
 	}
 }

@@ -14,8 +14,8 @@ const PlayersList = ({ children, players, onClick, onClickDel }) => (
 						<PlayerItem key={ i } onClickDel={ onClickDel } player={ player }/>
 					)}
 				</ul>
-				<Button onClick={ onClick } classes="ball">
-					<span role="img" aria-label="clear" className="clear">
+				<Button onClick={ onClick } classes="ball clear">
+					<span role="img" aria-label="clear">
 						❌
 					</span>
 				</Button>

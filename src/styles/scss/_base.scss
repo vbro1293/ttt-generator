@@ -39,6 +39,7 @@ h4 {
 .main {
 	padding: 0px 10px;
 }
+
 .button {
 	font-size: 1.1em;
 	display: block;
@@ -85,12 +86,11 @@ a {
 //Collect page
 //======================
 form {
-	width: 80%;
 	margin: auto;
 	padding: 5px;
 	input {
 		display: block;
-		width: 75%;
+		width: 60%;
 		margin: auto;
 		padding: 10px 10px;
 		font-size: 1.5em;
@@ -103,7 +103,7 @@ form {
 		border-radius: 1px;
 		transition: all 0.2s ease-in-out;
 		&:focus, &:active {
-			width: 100%;
+			width: 80%;
 			color: $color8;
 			background: $color7;
 			outline: none;
@@ -117,7 +117,7 @@ ul {
 		font-size: 1.2em;
 		font-weight: bold;
 		color: $color8;
-		width: 60%;
+		width: 70%;
 		margin: 10px auto;
 		padding: 10px 0px;
 		border-top: 1px solid $color2;
@@ -125,22 +125,20 @@ ul {
 	}
 }
 
-
-
 //======================
 //Show page
 //======================
-.rounds {
-
-}
-
 .round {
-
+	margin-bottom: 5%;
 }
 
 .match {
 	display: block;
 	border-top: 1px solid $color2;
+	&:last-child {
+		border-bottom: 1px solid $color2;
+
+	}
 }
 
 .player, .bye {
@@ -158,6 +156,7 @@ ul {
 	position: relative;
 }
 
+//had to swap postion of p1 and p2 around in order to get responsive positioning
 .player:first-child {
 	position: absolute;
 	left: 65%;
@@ -168,21 +167,29 @@ ul {
 	right: 65%;
 }
 
+.questionMark {
+	position: relative;
+	cursor: pointer;
+}
 .nextPlayer {
 	position: absolute;
-	left: 30px;
-	bottom: -40px;
-	font-size: 0.9em;
+	font-size: 0.7em;
 	font-weight: normal;
 	background: $color7;
 	color: $color4;
 	border-radius: 50%;
 	padding: 10px;
+	font-style: italic;
 }
 
-.questionMark {
-	position: relative;
-	cursor: pointer;
+.p1+.nextPlayer {
+	left: 30px;
+	bottom: -32px;
+}
+
+.p2+.nextPlayer {
+	right: 30px;
+	bottom: -32px;
 }
 
 .randomise, .add, .clear {

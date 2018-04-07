@@ -1,6 +1,20 @@
+//======================
+//General, repeated
+//======================
 body {
 	min-height: 97vh;
 	font-size: 18px;
+}
+
+
+//======================
+//Collect page
+//======================
+form input {
+	width: 50%;
+	&:focus, &:active {
+		width: 70%;
+	}
 }
 
 //======================
@@ -9,11 +23,14 @@ body {
 .ball {
 	height: 70px;
 	width: 70px;
+	border-top-width: 2px;
 }
 
 .match {
 	width: 50%;
 	margin: auto;
-	// background: $color7;
+}
 
+.p1+.nextPlayer, .p2+.nextPlayer {
+	bottom: -35px;
 }

@@ -5,26 +5,26 @@ class Player extends Component {
 		super(props);
 
 		this.state = {
-			clicked: false,
+			hover: false,
 		};
-		this.clicked = this.clicked.bind(this);
+		this.hover = this.hover.bind(this);
 	}
 
-	clicked(){
+	hover(){
 		
 		this.setState({
-			clicked: !this.state.clicked,
+			hover: !this.state.hover,
 		})
 	}
 
 	render(){
-		const { player, prevRound } = this.props;
+		const { player, prevRound, classes } = this.props;
 		return(
 			<div className="player">
 				{ player==="?" ? 
 					<div className="questionMark">
-						<p onMouseEnter={ this.clicked } onMouseLeave={ this.clicked }>{ player }</p>
-						{ this.state.clicked ? 
+						<p className={ classes } onMouseEnter={ this.hover } onMouseLeave={ this.hover }>{ player }</p>
+						{ this.state.hover ? 
 							<p className="nextPlayer">{ "Round "+ prevRound + " winner"}</p>
 						: 
 							null 

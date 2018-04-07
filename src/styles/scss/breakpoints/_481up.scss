@@ -27,10 +27,13 @@ form input {
 }
 
 .match {
-	width: 50%;
-	margin: auto;
+	width: 60%;
 }
 
 .p1+.nextPlayer, .p2+.nextPlayer {
 	bottom: -35px;
+}
+
+.winner {
+	width: 80%;
 }

@@ -3,6 +3,7 @@ import { List } from "immutable";
 import RouteLink from "../../containers/RouteLink";
 import Rounds from "./Rounds";
 import Button from "../Button";
+import Winner from "./Winner";
 
 class Tournament extends Component {
 	constructor(props) {
@@ -105,6 +106,7 @@ class Tournament extends Component {
 				{ this.props.players.size >=4 ?
 					<section className="rounds">
 						<Rounds rounds={ this.state.rounds }/>
+						<Winner />
 						<Button onClick={ this.rounds } classes={ "ball" }><span role="img" aria-label="shuffle" className="randomise">🔀</span></Button>
 						<RouteLink needsDisabling={ false } goHome={true}>Restart</RouteLink>
 					</section>

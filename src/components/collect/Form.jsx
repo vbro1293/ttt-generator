@@ -28,19 +28,19 @@ class Form extends Component {
 	}
 
 	change(e){
-		const curInput = e.target.value;
+		let curInput = e.target.value.trim();
 
-		//Validation - minLength, maxLength, repeated
-		const minLength = curInput.length < 3 ? "Too short" : null;
-		const maxLength = curInput.length > 15 ? "Too long" : null;
+		//Validation - minLength, maxLength, repeated, alphanumerics
+		const minLength = curInput.length < 3 ? "Please choose a name longer than 2 characters" : null;
+		const maxLength = curInput.length >= 15 ? "Please choose a name shorter than 15 characters" : null;
 		const repeated = (this.props.players.reduce((acc, player) =>
 			(player === curInput) ? acc = true : acc, false) ? "Please choose a unique name" : null);
-		
+
 		//Array of errors
 		const errors =  [minLength, maxLength, repeated].filter(error => error !== null);
 		
 		// Set local state to input value when typing, add any errors
-		this.setState({ 
+		this.setState({
 			input: curInput,
 			errors: errors,
 		});
@@ -51,10 +51,9 @@ class Form extends Component {
 		return(
 			<form className="add-players" onSubmit={ this.submit }>
 				<Input onChange={ e => this.change(e) } value={ this.state.input }/>
-				{ (this.state.errors.length > 0 && this.state.input) 
-				? 
-					this.state.errors.map((error, i) => <p key={ i }>{ error }</p>) 
-				: 
+				{ (this.state.errors.length > 0 && this.state.input) ? 
+					this.state.errors.map((error, i) => <p key={ i } className="error">{ error }</p>) 
+				:
 					null }
 				<Button isDisabled={ this.state.errors.length || !this.state.input } classes="ball">
 					<span role="img" aria-label="add" className="add">➕</span>

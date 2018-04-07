@@ -2,7 +2,7 @@
 //General, repeated
 //======================
 body {
-	font-size: 22px;
+	font-size: 24px;
 }
 
 //======================
@@ -32,4 +32,12 @@ ul li {
 
 .p1+.nextPlayer, .p2+.nextPlayer {
 	bottom: -40px;
+}
+
+.match {
+	width: 50%;
+}
+
+.winner {
+	width: 60%;
 }

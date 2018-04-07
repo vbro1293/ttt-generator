@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import PlayersList from "../components/collect/PlayersList";
 
 //===========Import action in
-import { resetPlayers } from "../data/actions";
+import { resetPlayers, deletePlayer } from "../data/actions";
 
 // mapStateToProps is passed in the current state returns object, which gets passed in as props to the connected component
 const mapStateToProps = state => {
@@ -17,6 +17,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onClick: () => dispatch(resetPlayers()),
+        onClickDel: player => dispatch(deletePlayer(player)),
     };
 };
 

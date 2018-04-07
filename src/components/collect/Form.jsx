@@ -32,7 +32,7 @@ class Form extends Component {
 
 		//Validation - minLength, maxLength, repeated, alphanumerics
 		const minLength = curInput.length < 3 ? "Please choose a name longer than 2 characters" : null;
-		const maxLength = curInput.length >= 15 ? "Please choose a name shorter than 15 characters" : null;
+		const maxLength = curInput.length >= 10 ? "Please choose a name shorter than 10 characters" : null;
 		const repeated = (this.props.players.reduce((acc, player) =>
 			(player === curInput) ? acc = true : acc, false) ? "Please choose a unique name" : null);
 

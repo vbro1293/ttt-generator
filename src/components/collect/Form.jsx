@@ -28,14 +28,22 @@ class Form extends Component {
 
 	change(e) {
 		/* Set local state to input value when typing */
-		this.setState({ input: e.target.value});
+		this.setState({ input: e.target.value });
+	}
+
+	validate() {
+		const { players } = this.props;
+		const repitition = players.reduce((acc, player) =>
+			(player === this.state.input) ? acc = true : acc, false);
+		return repitition;
 	}
 
 	render() {
+		
 		return(
 			<form className="add-players" onSubmit={ this.submit }>
 				<Input onChange={ e => this.change(e) } value={ this.state.input }/>
-				<Button isDisabled={ this.state.input.length === 0 } classes="ball"><span role="img" aria-label="add" className="add">➕</span></Button>
+				<Button isDisabled={ (this.state.input.length === 0) || (this.validate()) } classes="ball"><span role="img" aria-label="add" className="add">➕</span></Button>
 			</form>
 		)
 	}

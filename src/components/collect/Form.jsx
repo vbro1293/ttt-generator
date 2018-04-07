@@ -10,12 +10,13 @@ class Form extends Component {
 
 		this.state = {
 			input: "",
+			errors: [],
 		}
 
 		/* Bind methods to this */
 		this.submit = this.submit.bind(this);
 	}
-	submit(e) {
+	submit(e){
 		/* Prevent auto reload */
 		e.preventDefault(); 
 
@@ -26,16 +27,23 @@ class Form extends Component {
 		this.setState({input: "",})
 	}
 
-	change(e) {
-		/* Set local state to input value when typing */
-		this.setState({ input: e.target.value });
-	}
+	change(e){
+		const curInput = e.target.value;
 
-	validate() {
-		const { players } = this.props;
-		const repitition = players.reduce((acc, player) =>
-			(player === this.state.input) ? acc = true : acc, false);
-		return repitition;
+		//Validation - minLength, maxLength, repeated
+		const minLength = curInput.length < 3 ? "Too short" : null;
+		const maxLength = curInput.length > 15 ? "Too long" : null;
+		const repeated = (this.props.players.reduce((acc, player) =>
+			(player === curInput) ? acc = true : acc, false) ? "Please choose a unique name" : null);
+		
+		//Array of errors
+		const errors =  [minLength, maxLength, repeated].filter(error => error !== null);
+		
+		// Set local state to input value when typing, add any errors
+		this.setState({ 
+			input: curInput,
+			errors: errors,
+		});
 	}
 
 	render() {
@@ -43,7 +51,14 @@ class Form extends Component {
 		return(
 			<form className="add-players" onSubmit={ this.submit }>
 				<Input onChange={ e => this.change(e) } value={ this.state.input }/>
-				<Button isDisabled={ (this.state.input.length === 0) || (this.validate()) } classes="ball"><span role="img" aria-label="add" className="add">➕</span></Button>
+				{ (this.state.errors.length > 0 && this.state.input) 
+				? 
+					this.state.errors.map((error, i) => <p key={ i }>{ error }</p>) 
+				: 
+					null }
+				<Button isDisabled={ this.state.errors.length || !this.state.input } classes="ball">
+					<span role="img" aria-label="add" className="add">➕</span>
+				</Button>
 			</form>
 		)
 	}

@@ -10,7 +10,7 @@ import RouteLink from "../../containers/RouteLink";
 
 const Collect = () => (
 	<main className="main">
-		<SubHeader>Please add at least 4 players to your tournament</SubHeader>
+		<SubHeader>Create a tournament!</SubHeader>
 		<AddPlayer />
 		<PlayersList>Players</PlayersList>
 		<RouteLink>Generate Tournament</RouteLink>

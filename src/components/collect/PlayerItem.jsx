@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Button from "../Button";
 
 class PlayerItem extends Component {
@@ -12,13 +11,11 @@ class PlayerItem extends Component {
 			<li className="playerListItem">
 				<p className="playerItem">{ this.props.player }</p>
 				<Button onClick={ this.onClickDel.bind(this) } classes="ball delete">
-					<span role="img" aria-label="delete">
-						➖
-					</span>
+					<span role="img" aria-label="delete">➖</span>
 				</Button>
 			</li>
 		)
 	}
-}
+};
 
 export default PlayerItem;

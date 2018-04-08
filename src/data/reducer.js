@@ -1,4 +1,3 @@
-// import { Map, List } from "immutable";
 import initial from "./initial";
 
 const addPlayer = (state, { playerName }) => state.update("players", players => players.push(playerName));
@@ -18,6 +17,6 @@ const reducer = (state, action) => {
 		
 		default: return state;
 	}
-}
+};
 
 export default reducer;

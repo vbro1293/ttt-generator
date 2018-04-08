@@ -1,5 +1,4 @@
 import React from "react";
-
 import Player from "./Player";
 
 const Match = ({ player1, player2, bye, roundNum, matchInd, onClick }) => (
@@ -14,6 +13,6 @@ const Match = ({ player1, player2, bye, roundNum, matchInd, onClick }) => (
 			<p className="bye">BYE</p>
 		}
 	</div>
-)
+);
 
 export default Match;

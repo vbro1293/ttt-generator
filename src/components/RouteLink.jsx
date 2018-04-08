@@ -8,6 +8,6 @@ const GenerateLink = ({ children, noOfPlayers, needsDisabling, goHome, classes }
 			{ children }
 		</Button>
 	</Link>
-)
+);
 
 export default GenerateLink;

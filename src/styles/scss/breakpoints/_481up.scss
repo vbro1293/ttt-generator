@@ -3,7 +3,7 @@
 //======================
 body {
 	min-height: 97vh;
-	font-size: 18px;
+	font-size: 17px;
 }
 
 .ball {
@@ -31,16 +31,74 @@ form input {
 //======================
 //Show page
 //======================
-
-
-.match {
-	width: 60%;
-}
-
 .p1+.nextPlayer, .p2+.nextPlayer {
 	bottom: -35px;
 }
 
 .winner {
 	width: 80%;
+}
+.round {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: no-wrap;
+	justify-content: space-between;
+}
+.match {
+	border-left: 1px solid $color2;
+	width: 100%;
+	margin: 0;
+	border-top: none;
+	border-bottom: none;
+	&:first-child {
+		border-left: none;
+		border-bottom: none;
+	}
+	&:last-child {
+		border-bottom: none;
+	}
+
+	flex-grow: 1;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.players {
+	position: static;
+	p {
+		display: block;
+	}
+	.player {
+		min-width: 0;
+	}
+	.player:first-child {
+		position: static;
+		left: 60%;
+	}
+
+	.player:last-child {
+		position: static;
+		right:60%;
+	}
+}
+
+.bye {
+	margin: 0px;
+}
+
+.wholeRound h2 {
+}
+
+.wholeRound {
+	margin-bottom: 10%;
+	h2 {
+		border-top: 3px solid $color2;
+		border-bottom: 3px solid $color2;
+	}
+}
+
+.plays {
+	margin: 0px;
 }

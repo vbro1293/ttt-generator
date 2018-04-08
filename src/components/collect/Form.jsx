@@ -10,12 +10,14 @@ class Form extends Component {
 
 		this.state = {
 			input: "",
+			errors: [],
 		}
 
 		/* Bind methods to this */
 		this.submit = this.submit.bind(this);
 	}
-	submit(e) {
+
+	submit(e){
 		/* Prevent auto reload */
 		e.preventDefault(); 
 
@@ -23,19 +25,54 @@ class Form extends Component {
 		this.props.onSubmit(this.state.input);
 
 		/* Reset input field */
-		this.setState({input: "",})
+		this.setState({
+			input: ""
+		})
 	}
 
-	change(e) {
-		/* Set local state to input value when typing */
-		this.setState({ input: e.target.value});
+	change(e){
+		let curInput = e.target.value.trim();
+
+		//Validation - minLength, maxLength, repeated, alphanumerics
+		const minLength = curInput.length < 3 ? "Please choose a name longer than 2 characters" : null;
+		const maxLength = curInput.length >= 9 ? "Please choose a name shorter than 9 characters" : null;
+		const repeated = (this.props.players.reduce((acc, player) =>
+			(player === curInput) ? acc = true : acc, false) ?
+				"You are unique. Please choose a unique name"
+			:
+				null
+			);
+
+		//Array of errors
+		const errors =  [minLength, maxLength, repeated].filter(error => error !== null);
+		
+		// Set local state to input value when typing, add any errors
+		this.setState({
+			input: curInput,
+			errors: errors,
+		});
 	}
 
-	render() {
+	render(){
+		const numPlayersMore = 4-this.props.players.size;
 		return(
 			<form className="add-players" onSubmit={ this.submit }>
 				<Input onChange={ e => this.change(e) } value={ this.state.input }/>
-				<Button isDisabled={ this.state.input.length === 0 } classes="ball"><span role="img" aria-label="add" className="add">➕</span></Button>
+				{ (this.state.errors.length > 0 && this.state.input) ? 
+					this.state.errors.map((error, i) => <p key={ i } className="error">{ error }</p>) 
+				:
+					null
+				}
+				{ numPlayersMore<4 && numPlayersMore>0 ? 
+					<p className="error">
+						{ "Please add at least "+ numPlayersMore +" more " +( numPlayersMore===1 ? "player" : "players") }
+					</p> 
+				: 
+					null
+				}
+				<Button isDisabled={ this.state.errors.length || !this.state.input } classes="ball">
+					<span role="img" aria-label="add" className="add">➕</span>
+				</Button>
 			</form>
 		)
 	}

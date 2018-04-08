@@ -2,59 +2,65 @@
 //General, repeated
 //======================
 body {
+	font-size: 16px;
+	color: $color1;
 	background-image: linear-gradient(to bottom, $opacityBackground2 0%,$opacityBackground2 100%), url("../../media/background2.png");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	min-height: 96vh;
-	font-size: 16px;
 }
 
 h1 {
 	font-size: 1.8em;
-	color: $color4;
+	color: $color3;
 	margin: 0px;
-	padding: 30px 10px 20px 10px;
+	padding: 50px 10px 30px 10px;
 	background-image: linear-gradient(to bottom, $opacityBackground1 0%,$opacityBackground1 100%), url("../../media/background1.png");
 	background-size: 100% 100%;
 }
 
 h2 {
 	font-size: 1.5em;
-	color: $color4;
-	margin-top: 1em;
-	margin-bottom: 0.5em;
+	color: $color3;
+	padding-top: 1em;
+	padding-bottom: 0.5em;
 	&::before, &::after {
 		content: "   🏓   ";
 		font-size: 0.9em;
 	}
 }
 
+h3 {
+	font-size: 1.4em;
+}
+
 h4 {
-	font-size: 1em;
+	font-size: 1.2em;
 	font-style: italic;
 	margin: 0px;
-	padding: 20px 10px;
+	padding: 30px 10px;
 }
 
 .main {
 	padding: 0px 10px;
 }
+
 .button {
 	font-size: 1.1em;
 	display: block;
 	padding: 15px 15px;
 	margin: 20px auto;
 	border: none;
-	border-top: 5px solid $color6;
+	border-top: 5px solid $color4;
 	border-radius: 1px;
-	color: $color4;
+	color: $color3;
 	transition: all 0.2s ease-in;
-	background: $color5;
+	background: $color2;
 	&:focus {
 		outline: none;
 	}
 	&:hover {
-		color: $color9;
+		color: $color5;
 	}
 }
 
@@ -63,17 +69,17 @@ h4 {
 	width: 55px;
 	font-size: 1em;
 	padding: 0px;
-	background: $color2;
-	border-top: 1px solid $color9;
-	border-left: 1px solid $color9;
+	background: $color6;
+	border-top: 1px solid $color5;
+	border-left: 1px solid $color5;
 	border-radius: 50%;
 }
 
 .isDisabled, a.isDisabled {
-	color: $color5;
+	color: $color2;
 	background: $color7;
 	&:hover {
-		color: $color5;
+		color: $color2;
 	}
 }
 
@@ -81,30 +87,33 @@ a {
 	text-decoration: none;
 }
 
+.add, .clear, .randomise {
+	font-size: 1.8em;
+}
+
 //======================
 //Collect page
 //======================
 form {
-	width: 80%;
 	margin: auto;
 	padding: 5px;
 	input {
 		display: block;
-		width: 75%;
+		width: 60%;
 		margin: auto;
 		padding: 10px 10px;
-		font-size: 1.5em;
+		font-size: 1.4em;
 		text-align: center;
-		color: $color4;
-		background: $color5;
+		color: $color3;
+		background: $color2;
 		border-radius: 0px;
 		border: none;
-		border-top: 5px solid $color6;
+		border-top: 5px solid $color4;
 		border-radius: 1px;
 		transition: all 0.2s ease-in-out;
 		&:focus, &:active {
-			width: 100%;
-			color: $color8;
+			width: 80%;
+			color: $color1;
 			background: $color7;
 			outline: none;
 		}
@@ -116,46 +125,70 @@ ul {
 	li {
 		font-size: 1.2em;
 		font-weight: bold;
-		color: $color8;
-		width: 60%;
+		color: $color1;
+		width: 70%;
 		margin: 10px auto;
 		padding: 10px 0px;
-		border-top: 1px solid $color2;
+		border-top: 1px solid $color6;
 		list-style: none;
+		overflow: hidden;
+		position: relative;
+		.playerItem {
+			display: inline-block;
+		}
 	}
 }
 
+.error { 
+	color: $color9;
+	font-style: italic;
+}
 
+.delete {
+	font-size: 15px;
+	position: absolute;
+	right: 0px;
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	margin: 15px auto;
+	background: $color9;
+}
+
+.button.clear {
+	background: $color4;
+	color: $color6;
+	border-top-color: $color3;
+	border-left-color: $color3;
+	&:hover {
+		color: $color8;
+	}
+}
 
 //======================
 //Show page
 //======================
-.rounds {
-
-}
-
 .round {
-
+	margin-bottom: 5%;
 }
 
 .match {
 	display: block;
-	border-top: 1px solid $color2;
+	border-top: 1px solid $color6;
+	width: 80%;
+	margin: auto;
+	&:last-child {
+		border-bottom: 1px solid $color6;
+	}
+}
+
+.players {
+	position: relative;
 }
 
 .player, .bye {
 	display: inline-block;
 	font-weight: bold;
-}
-
-.plays {
-	display: inline-block;
-	margin-left: 5px;
-	margin-right: 5px;
-}
-
-.players {
-	position: relative;
 }
 
 .player:first-child {
@@ -168,16 +201,10 @@ ul {
 	right: 65%;
 }
 
-.nextPlayer {
-	position: absolute;
-	left: 30px;
-	bottom: -40px;
-	font-size: 0.9em;
-	font-weight: normal;
-	background: $color7;
-	color: $color4;
-	border-radius: 50%;
-	padding: 10px;
+.plays {
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .questionMark {
@@ -185,6 +212,30 @@ ul {
 	cursor: pointer;
 }
 
-.randomise, .add, .clear {
-	font-size: 1.8em;
+.nextPlayer {
+	font-size: 0.7em;
+	font-weight: normal;
+	font-style: italic;
+	color: $color3;
+	position: absolute;
+	padding: 10px;
+	border-radius: 50%;
+	background: $color7;
+}
+
+.p1+.nextPlayer {
+	left: 30px;
+	bottom: -32px;
+}
+
+.p2+.nextPlayer {
+	right: 30px;
+	bottom: -32px;
+}
+
+.winner {
+	margin: auto;
+	padding: 1%;
+	border-top: 2px solid $color6;
+	border-bottom: 2px solid $color6;
 }

@@ -1,11 +1,48 @@
+//======================
+//General, repeated
+//======================
 body {
-	font-size: 22px;
+	font-size: 24px;
+}
+
+.ball {
+	height: 85px;
+	width: 85px;
+	border-top-width: 3px;
+	border-left-width: 2px;
+}
+
+//======================
+//Collect page
+//======================
+form input {
+	width: 40%;
+	&:focus, &:active {
+		width: 60%;
+	}
+}
+
+ul li {
+	width: 55%;
+	padding:20px 0px;
+}
+
+.delete {
+	height: 60px;
+	width: 60px;
 }
 
 //======================
 //Show page
 //======================
-.ball {
-	height: 85px;
-	width: 85px;
+.match {
+	width: 50%;
+}
+
+.p1+.nextPlayer, .p2+.nextPlayer {
+	bottom: -40px;
+}
+
+.winner {
+	width: 60%;
 }

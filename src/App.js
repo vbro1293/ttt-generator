@@ -11,13 +11,16 @@ import FourOhFour from "./components/FourOhFour";
 import CollectAll from "./components/collect/CollectAll";
 import ShowAll from "./components/show/ShowAll";
 
-
-
 const App = () => (
 	<div>
 		{ /* header shows on all pages*/ }
-		<Header><span role="img" aria-label="paddle">🏓</span> Table Tennis Tournament <span role="img" aria-label="paddle">🏓</span><br /> Generator</Header>
-
+		<Header>
+			<span role="img" aria-label="paddle"> 🏓 </span>
+			Table Tennis Tournament
+			<span role="img" aria-label="paddle"> 🏓 </span>
+			<br /> 
+			Generator
+		</Header>
 		{ /* route  switch - to handle 404s */ }
 		<Switch>
 			{ /* Collect players data */}
@@ -30,7 +33,7 @@ const App = () => (
 			<Route component={ FourOhFour } />
 		</Switch>
 	</div>
-)
+);
 
 export default App;
 

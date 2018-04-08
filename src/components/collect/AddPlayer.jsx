@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "./Form";
+import Form from "../../containers/Form";
 
 const AddPlayer = ({ onSubmit }) => (
 	<Form onSubmit={ onSubmit } />

@@ -8,6 +8,7 @@ class Player extends Component {
 			hover: false,
 		};
 		this.hover = this.hover.bind(this);
+		this.clicked = this.clicked.bind(this);
 	}
 
 	hover(){
@@ -16,8 +17,14 @@ class Player extends Component {
 		})
 	}
 
+	clicked(){
+		const { player, roundNum, matchInd } = this.props;
+		this.props.onClick(player, roundNum, matchInd);
+	};
+
 	render(){
-		const { player, prevRound, classes } = this.props;
+		const { player, roundNum, classes } = this.props;
+		const prevRound = roundNum - 1;
 		return(
 			<div className="player">
 				{ player==="?" ? 
@@ -30,7 +37,7 @@ class Player extends Component {
 						}
 					</div>
 				:
-					<p>{ player }</p>
+					<p onClick={ this.clicked }>{ player }</p>
 				}
 			</div>
 		)

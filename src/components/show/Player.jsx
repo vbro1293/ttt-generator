@@ -11,7 +11,6 @@ class Player extends Component {
 	}
 
 	hover(){
-		
 		this.setState({
 			hover: !this.state.hover,
 		})

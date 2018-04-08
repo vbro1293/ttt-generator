@@ -132,12 +132,42 @@ ul {
 		padding: 10px 0px;
 		border-top: 1px solid $color2;
 		list-style: none;
+		overflow: hidden;
+		position: relative;
 	}
 }
 
 .error { 
 	color: $color3;
 	font-style: italic;
+}
+
+.delete {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	font-size: 15px;
+	margin: 15px auto;
+	position: absolute;
+	right: 0px;
+}
+
+.playerItem {
+	display: inline-block;
+}
+
+.delete {
+	background: $color3;
+}
+
+.button.clear {
+	background: $color6;
+	color: $color2;
+	border-top-color: $color4;
+	border-left-color: $color4;
+	&:hover {
+		color: $color10;
+	}
 }
 
 //======================
@@ -154,7 +184,6 @@ ul {
 	margin: auto;
 	&:last-child {
 		border-bottom: 1px solid $color2;
-
 	}
 }
 

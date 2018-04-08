@@ -1,11 +1,11 @@
 import React from "react";
 import Round from "./Round";
 
-const Rounds = ({ rounds }) => {
+const Rounds = ({ rounds, onClick }) => {
 	return (
 		<section>
 			{ rounds.map((round, i) => 
-				<Round key={ i } round={ round } roundNum={ 1+i }/>
+				<Round key={ i } round={ round } roundNum={ 1+i } onClick={ onClick }/>
 			)}
 		</section>
 	)

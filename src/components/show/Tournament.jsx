@@ -12,6 +12,7 @@ class Tournament extends Component {
 			rounds: List([]),
 		};
 		this.rounds = this.rounds.bind(this);
+		this.clickedWinner = this.clickedWinner.bind(this);
 	}
 
 	componentDidMount(){
@@ -59,7 +60,12 @@ class Tournament extends Component {
 
 			firstPlayers.map((player, i)=> {
 				if (i%2 === 0){
-					let match = {p1: player, p2: "", bye:false};
+					let match = {
+						p1: player,
+						p2: "",
+						bye:false,
+						winner: null
+					};
 					return rounds[0].push(match);
 				}
 				else {
@@ -73,7 +79,12 @@ class Tournament extends Component {
 
 			secondPlayers.map((player, i)=> {
 				if (i%2 === 0){
-					let match = {p1: player, p2: "?", bye:false};
+					let match = {
+						p1: player,
+						p2: "?",
+						bye:false,
+						winner: null
+					};
 					return rounds[1].push(match);
 				}
 				else {
@@ -87,7 +98,12 @@ class Tournament extends Component {
 				let currentLength = round.length;
 				if (!(matches === currentLength)){
 					for (let j=0; j<(matches-currentLength); j+=1){
-						round.push({p1: "?", p2: "?", bye: false})
+						round.push({
+							p1: "?",
+							p2: "?",
+							bye: false,
+							winner: null
+						})
 					};
 				}
 				return matches = matches/2;	
@@ -99,16 +115,34 @@ class Tournament extends Component {
 		}
 	}
 
+	clickedWinner(player, roundNum, matchInd){
+		//set current round winner
+		const rounds = this.state.rounds.slice();
+		const curRound = roundNum-1;
+		rounds[curRound][matchInd].winner = player;
+
+		//set next round player as winner
+		//rounds index for next round === roundNum 
+		console.log(rounds[roundNum]);
+
+
+
+
+		this.setState({
+			rounds: rounds
+		})
+	}
+
 	render() {
 		return(
 			<section className="tournament">
 				{/* Check players in store */}
 				{ this.props.players.size >=4 ?
 					<section className="rounds">
-						<Rounds rounds={ this.state.rounds }/>
+						<Rounds rounds={ this.state.rounds } onClick={ this.clickedWinner }/>
 						<Winner />
 						<Button onClick={ this.rounds } classes={ "ball" }><span role="img" aria-label="shuffle" className="randomise">🔀</span></Button>
-						<RouteLink needsDisabling={ false } goHome={true}>Restart</RouteLink>
+						<RouteLink needsDisabling={ false } goHome={ true }>Restart</RouteLink>
 					</section>
 				:
 					<RouteLink needsDisabling={ false }>Build your tournament!</RouteLink>

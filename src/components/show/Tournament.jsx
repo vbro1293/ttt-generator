@@ -123,16 +123,42 @@ class Tournament extends Component {
 
 		//set next round player as winner
 		//rounds index for next round === roundNum 
-		console.log(rounds[roundNum]);
+
+		//
+		// const winnerPrev = [player];
+		// // const nextRound = rounds[roundNum];
+		// console.log(rounds[roundNum])
+		// const keys = ["p1", "p2"];
+
+	
+		// match.find(key => rounds[roundNum][i][key] === "?")
+		// rounds[roundNum].reduce((acc, value) => {
+
+		// 	return rounds[roundNum][i].key = winnerPrev.pop()
+		// }), 0)
 
 
 
+		//get all winners
+		// (rounds.map(round => round.map(match => match.winner ? winners.push(match.winner) : null)));
+		// console.log(winners)
+
+		// rounds.map((round,i) => round.map((match,j) => {
+		// 	if (match.p1==="?"){
+		// 		rounds[i][j].p1 = winners.pop()
+		// 	}
+		// 	else if (match.p2==="?"){
+		// 		rounds[i][j].p2 = winners.pop()
+		// 	}
+		// }))
+		// console.log(rounds)
 
 		this.setState({
 			rounds: rounds
 		})
 	}
 
+	
 	render() {
 		return(
 			<section className="tournament">

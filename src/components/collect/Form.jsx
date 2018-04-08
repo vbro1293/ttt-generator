@@ -16,6 +16,7 @@ class Form extends Component {
 		/* Bind methods to this */
 		this.submit = this.submit.bind(this);
 	}
+
 	submit(e){
 		/* Prevent auto reload */
 		e.preventDefault(); 
@@ -24,7 +25,9 @@ class Form extends Component {
 		this.props.onSubmit(this.state.input);
 
 		/* Reset input field */
-		this.setState({input: "",})
+		this.setState({
+			input: ""
+		})
 	}
 
 	change(e){
@@ -34,7 +37,11 @@ class Form extends Component {
 		const minLength = curInput.length < 3 ? "Please choose a name longer than 2 characters" : null;
 		const maxLength = curInput.length >= 9 ? "Please choose a name shorter than 9 characters" : null;
 		const repeated = (this.props.players.reduce((acc, player) =>
-			(player === curInput) ? acc = true : acc, false) ? "You are unique. Please choose a unique name" : null);
+			(player === curInput) ? acc = true : acc, false) ?
+				"You are unique. Please choose a unique name"
+			:
+				null
+			);
 
 		//Array of errors
 		const errors =  [minLength, maxLength, repeated].filter(error => error !== null);
@@ -46,7 +53,7 @@ class Form extends Component {
 		});
 	}
 
-	render() {
+	render(){
 		const numPlayersMore = 4-this.props.players.size;
 		return(
 			<form className="add-players" onSubmit={ this.submit }>
@@ -54,13 +61,15 @@ class Form extends Component {
 				{ (this.state.errors.length > 0 && this.state.input) ? 
 					this.state.errors.map((error, i) => <p key={ i } className="error">{ error }</p>) 
 				:
-					null }
+					null
+				}
 				{ numPlayersMore<4 && numPlayersMore>0 ? 
 					<p className="error">
 						{ "Please add at least "+ numPlayersMore +" more " +( numPlayersMore===1 ? "player" : "players") }
 					</p> 
 				: 
-					null}
+					null
+				}
 				<Button isDisabled={ this.state.errors.length || !this.state.input } classes="ball">
 					<span role="img" aria-label="add" className="add">➕</span>
 				</Button>

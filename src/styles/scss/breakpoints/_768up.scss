@@ -35,13 +35,12 @@ ul li {
 //======================
 //Show page
 //======================
+.match {
+	width: 50%;
+}
 
 .p1+.nextPlayer, .p2+.nextPlayer {
 	bottom: -40px;
-}
-
-.match {
-	width: 50%;
 }
 
 .winner {

@@ -15,9 +15,7 @@ const PlayersList = ({ children, players, onClick, onClickDel }) => (
 					)}
 				</ul>
 				<Button onClick={ onClick } classes="ball clear">
-					<span role="img" aria-label="clear">
-						❌
-					</span>
+					<span role="img" aria-label="clear">❌</span>
 				</Button>
 			</section>
 		:

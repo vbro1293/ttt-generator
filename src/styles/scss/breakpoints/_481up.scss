@@ -12,7 +12,6 @@ body {
 	border-top-width: 2px;
 }
 
-
 //======================
 //Collect page
 //======================
@@ -31,21 +30,23 @@ form input {
 //======================
 //Show page
 //======================
-.p1+.nextPlayer, .p2+.nextPlayer {
-	bottom: -35px;
+.wholeRound {
+	margin-bottom: 10%;
+	h2 {
+		border-top: 3px solid $color6;
+		border-bottom: 3px solid $color6;
+	}
 }
 
-.winner {
-	width: 80%;
-}
 .round {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: no-wrap;
 	justify-content: space-between;
 }
+
 .match {
-	border-left: 1px solid $color2;
+	border-left: 1px solid $color6;
 	width: 100%;
 	margin: 0;
 	border-top: none;
@@ -57,9 +58,7 @@ form input {
 	&:last-child {
 		border-bottom: none;
 	}
-
 	flex-grow: 1;
-
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -77,28 +76,24 @@ form input {
 		position: static;
 		left: 60%;
 	}
-
 	.player:last-child {
 		position: static;
 		right:60%;
 	}
 }
 
+.plays {
+	margin: 0px;
+}
+
 .bye {
 	margin: 0px;
 }
 
-.wholeRound h2 {
+.p1+.nextPlayer, .p2+.nextPlayer {
+	bottom: -35px;
 }
 
-.wholeRound {
-	margin-bottom: 10%;
-	h2 {
-		border-top: 3px solid $color2;
-		border-bottom: 3px solid $color2;
-	}
-}
-
-.plays {
-	margin: 0px;
+.winner {
+	width: 80%;
 }

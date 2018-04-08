@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 
 class Player extends Component {
-	constructor(props) {
+	constructor(props){
 		super(props);
 
 		this.state = {
 			hover: false,
 		};
+
 		this.hover = this.hover.bind(this);
 		this.clicked = this.clicked.bind(this);
 	}

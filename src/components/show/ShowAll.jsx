@@ -5,7 +5,7 @@ import Tournament from "../../containers/Tournament";
 
 const ShowAll = () => (
 	<main className="main">
-			<Tournament />
+		<Tournament />
 	</main>
 )
 

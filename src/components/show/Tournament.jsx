@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { List } from "immutable";
+
+//================Import components
 import RouteLink from "../../containers/RouteLink";
 import Rounds from "./Rounds";
 import Button from "../Button";
@@ -8,9 +10,11 @@ import Winner from "./Winner";
 class Tournament extends Component {
 	constructor(props) {
 		super(props);
+		
 		this.state = {
 			rounds: List([]),
 		};
+		
 		this.rounds = this.rounds.bind(this);
 		this.clickedWinner = this.clickedWinner.bind(this);
 	}
@@ -167,7 +171,9 @@ class Tournament extends Component {
 					<section className="rounds">
 						<Rounds rounds={ this.state.rounds } onClick={ this.clickedWinner }/>
 						<Winner />
-						<Button onClick={ this.rounds } classes={ "ball" }><span role="img" aria-label="shuffle" className="randomise">🔀</span></Button>
+						<Button onClick={ this.rounds } classes={ "ball" }>
+							<span role="img" aria-label="shuffle" className="randomise">🔀</span>
+						</Button>
 						<RouteLink needsDisabling={ false } goHome={ true }>Restart</RouteLink>
 					</section>
 				:

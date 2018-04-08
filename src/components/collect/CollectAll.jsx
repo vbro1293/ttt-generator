@@ -15,6 +15,6 @@ const Collect = () => (
 		<PlayersList>Players</PlayersList>
 		<RouteLink>Generate Tournament</RouteLink>
 	</main>
-)
+);
 
 export default Collect;
